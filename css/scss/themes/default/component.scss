@@ -468,7 +468,6 @@
 	> .#{$m}btn{ border-radius: inherit; }
 	> .#{$m}dropmenu{
 		display: none;
-		padding: nth($padding, 1) 0;
 		opacity: 0;
 		transform: translate(4px, 0);
 	}
@@ -483,7 +482,6 @@
 		height: 0;
 	}
 	&:hover > .#{$m}dropmenu{
-		padding: nth($padding, 1) 0;
 		overflow: unset;
 		height: unset;
 	}

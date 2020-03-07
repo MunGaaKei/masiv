@@ -104,9 +104,6 @@
 	flex-direction: column;
 	min-height: 240px;
 	border-radius: $radius;
-	&:focus-within{
-		box-shadow: $shadow;
-	}
 	&.msv-full{
 		position: fixed; z-index: 100;
 		left: 0; right: 0; bottom: 0; top: 0;
@@ -123,7 +120,7 @@
 	background-color: $background;
 	user-select: none;
 	.#{$m}group{
-		padding: 0 8px;
+		padding: nth($padding, 1);
 		min-width: 152px;
 	}
 	.icon-hashtag{
@@ -141,7 +138,7 @@
 .msv-editor-colors{
 	display: flex;
 	flex-wrap: wrap;
-	padding: 6px 6px 0;
+	padding: nth($padding, 1);
 	> a {
 		box-sizing: border-box;
 		height: 20px;
