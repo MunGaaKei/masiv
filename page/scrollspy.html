@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>滚动监听</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+        .scrollspy-navs{
+            float: right;
+            top: 0;
+        }
+        .scrollspy-navs .li{
+            display: flex;
+            align-items: center;
+            border-radius: 2px;
+            color: #a9a9a9;
+        }
+        .scrollspy-navs .li:after{
+            content: '\20';
+            margin-left: .5em;
+            height: 0.5em; width: 1em;
+            border-radius: 1em;
+            background-color: #258de6;
+            transition: all .24s;
+            transform: scaleX(0);
+        }
+        .scrollspy-navs .li.active{
+            color: #258de6;
+            font-weight: 700;
+        }
+        .scrollspy-navs .li.active:after{
+            transform: scaleX(1);
+        }
+        .scrollspy-demo{
+            overflow: hidden;
+        }
+        .scrollspy-demo > div + div{
+            margin-top: 50px;
+        }
+        .scrollspy-demo h3 {
+            padding: 10px 0;
+        }
+        .blocker{
+            height: 40vh;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<article class="article">
+	<h1>滚动监听</h1>
+    <p>引入<code class="blue-o">JS</code></p>
+<pre class="language-js">
+    <code class="language-js">
+&lt;script src="js/M.scrollspy.js">&lt;/script>
+    </code>
+</pre>
+
+	<section class="section">
+        <h2>使用</h2>
+        <p>该插件规定导航需使用<code>[href]</code>属性指定节点对应关系。</p>
+        <div class="widget">
+            <ul class="col-sm-2 sticky scrollspy-navs">
+                <li><a href="#html" class="li">HTML</a></li>
+                <li><a href="#js" class="li">JS</a></li>
+                <li><a href="#neptune" class="li">Neptune</a></li>
+                <li><a href="#jupiter" class="li">Jupiter</a></li>
+                <li><a href="#saturn" class="li">Saturn</a></li>
+            </ul>
+            <div class="content scrollspy-demo">
+                <div id="html">
+                    <h3>HTML</h3>
+<pre class="language-html">
+    <code class="language-html">
+&lt;ul id="scrollspy-navs sticky col-sm-2">
+    &lt;li>&lt;a href="#html" class="li">HTML&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#js" class="li">JS&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#neptune" class="li">Neptune&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#jupiter" class="li">Jupiter&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="#saturn" class="li">Saturn&lt;/a>&lt;/li>
+&lt;/ul>
+
+&lt;div id="html">
+    &lt;h3>HTML&lt;/h3>
+    ...
+&lt;/div>
+
+&lt;div id="js">
+    &lt;h3>JS&lt;/h3>
+    ...
+&lt;/div>
+&lt;div id="neptune">
+    &lt;h3>Neptune&lt;/h3>
+    ...
+&lt;/div>
+&lt;div id="jupiter">
+    &lt;h3>Jupiter&lt;/h3>
+    ...
+&lt;/div>
+&lt;div id="saturn">
+    &lt;h3>Saturn&lt;/h3>
+    ...
+&lt;/div>
+    </code>
+</pre>
+                </div>
+
+                <div id="js">
+                    <h3>JS</h3>
+<pre class="language-js">
+    <code class="language-js">
+M('#scrollspy-demo').scrollspy({});
+    </code>
+</pre>
+                </div>
+
+                <div id="neptune">
+                    <h3>Neptune</h3>
+                    <div class="blocker">Neptune</div>
+                </div>
+
+                <div id="jupiter">
+                    <h3>Jupiter</h3>
+                    <div class="blocker">Jupiter</div>
+                </div>
+
+                <div id="saturn">
+                    <h3>Saturn</h3>
+                    <div class="blocker">Saturn</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="params" class="section">
+        <h2>参数属性说明</h2>
+        <div class="widget">
+            <table class="table">
+                <thead><th>属性</th><th>默认值</th><th>说明</th></thead>
+                <tbody>
+                    <tr><td>navs</td><td>'a'</td><td>导航项选择器</td></tr>
+                    <tr><td>active</td><td>'active'</td><td>导航高亮类名</td></tr>
+                    <tr><td>offset</td><td>'0px'</td><td>偏移值</td></tr>
+                    <tr><td>viewport</td><td>undefined</td><td>目标区域节点</td></tr>
+                    <tr><td>enter</td><td>undefined</td><td>接受一个函数作为目标<b class="blue">激活</b>时触发的回调函数</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</article>
+
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script src="../js/plugins/M.scrollspy.js"></script>
+<script>
+M(function(){
+
+    M('.scrollspy-navs').scrollspy({
+        
+    });
+
+});
+</script>
+</body>
+</html>

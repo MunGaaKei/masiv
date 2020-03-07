@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>对话框</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>对话框</h1>
+
+	<section class="section">
+		<h2>使用</h2>
+		<p>对话框使用<code>.dialog</code>类修饰，点击按钮 <a class="btn" masiv-dialog="#elephant">打开</a> 一个基本的对话框。</p>
+		<p>结构如下：</p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a class="btn" masiv-dialog="#elephant">打开&lt;/a>
+
+&lt;div id="elephant" class="dialog">
+	&lt;header masiv-drag>
+		&lt;b>注册用户&lt;/b>
+		&lt;a class="right iconfont icon-close" masiv-dismiss="#elephant">&lt;/a>
+	&lt;/header>
+	&lt;div class="content">
+		&lt;div class="field">
+			&lt;label class="label-inline col-5">
+				&lt;span class="label">用户：&lt;/span>
+				&lt;input type="text" class="input" autocomplete="off">
+			&lt;/label>
+			&lt;label class="label-inline col-5">
+				&lt;span class="label">密码：&lt;/span>
+				&lt;input type="password" class="input" autocomplete="off">
+			&lt;/label>
+		&lt;/div>
+		&lt;div class="field">
+			&lt;label class="label-inline">
+				&lt;span class="label">邮箱：&lt;/span>
+				&lt;input type="email" class="input" autocomplete="off">
+			&lt;/label>
+		&lt;/div>
+	&lt;/div>
+	&lt;footer class="group">
+		&lt;button class="btn white-o right" type="submit" masiv-dismiss="#elephant">取消&lt;/button>
+		&lt;button class="btn pink-o" type="submit">确认&lt;/button>
+	&lt;/footer>
+&lt;/div>
+    </code>
+</pre>
+		<p>触发器添加属性<code>masiv-dialog</code>并且该值为对应对话框的选择器，同时，关闭对话框的触发器则添加的是<code>masiv-dismiss</code>属性，属性值同样为需要关闭的对话框的选择器。</p>
+	</section>
+
+	<section class="section">
+		<h2>在有背景层下的显示</h2>
+		<p>在对话框外面包裹一层背景层<code>.backdrop</code>，背景层可以同样按需要添加<code>masiv-dismiss</code>属性。<a class="btn black-o" masiv-dialog="#goose">打开</a> 一个有背景层的对话框。</p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a class="btn black-o" masiv-dialog="#goose">打开&lt;/a>
+
+&lt;div class="backdrop" masiv-dismiss="#goose">
+	&lt;div id="goose" class="dialog">
+		&lt;header>&lt;b>对话框&lt;/b>&lt;/header>
+		&lt;div class="content">&lt;span id="goosetime">&lt;/span>，你打开了一个有背景层的对话框。&lt;/div>
+	&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>触发事件</h2>
+		<p>对话框的打开与关闭会分别触发<code>beforeOpen</code>、<code>open</code>事件、<code>beforeClose</code>事件与<code>close</code>事件。</p>
+<pre class="language-js">
+    <code class="language-js">
+M('#goose').on('open', function(){
+	document.getElementById('goosetime').innerHTML = M.date(new Date());
+}).on('close', function(){
+	M.message({
+		html: '你关闭了对话框',
+		color: 'red-o',
+		max: 1
+	});
+});
+    </code>
+</pre>
+	</section>
+</article>
+
+<div id="elephant" class="dialog">
+	<header masiv-drag="1">
+		<b>注册用户</b>
+		<a class="right iconfont icon-close" masiv-dismiss="#elephant"></a>
+	</header>
+	<div class="content">
+		<div class="field">
+			<label class="label-inline col-5">
+				<span class="label">用户：</span>
+				<input type="text" class="input" autocomplete="off">
+			</label>
+			<label class="label-inline col-5">
+				<span class="label">密码：</span>
+				<input type="password" class="input" autocomplete="off">
+			</label>
+		</div>
+		<div class="field">
+			<label class="label-inline">
+				<span class="label">邮箱：</span>
+				<input type="email" class="input" autocomplete="off">
+			</label>
+		</div>
+	</div>
+	<footer class="group">
+		<button class="btn white-o right" type="submit" masiv-dismiss="#elephant">取消</button>
+		<button class="btn pink-o" type="submit">确认</button>
+	</footer>
+</div>
+
+<div class="backdrop" masiv-dismiss="#goose">
+	<div id="goose" class="dialog">
+		<header><b>对话框</b></header>
+		<div class="content"><span id="goosetime"></span>，你打开了一个有背景层的对话框。</div>
+	</div>
+</div>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+;(function(){
+
+	M('#goose').on('open', function(){
+		document.getElementById('goosetime').innerHTML = M.time(new Date());
+	}).on('close', function(){
+		M.message({
+			html: '你关闭了对话框。',
+			color: 'red-o',
+			max: 1
+		});
+	});
+
+})();
+</script>
+</body>
+</html>

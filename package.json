@@ -1,0 +1,16 @@
+{
+	"name": "Masiv",
+	"version": "1.0.0",
+	"author": "IAN MAN",
+	"main": "gulpfile.js",
+	"scripts": {
+		"start": "gulp default"
+	},
+	"dependencies": {
+		"browser-sync": "latest",
+		"gulp": "latest",
+		"gulp-sass": "latest",
+		"gulp-sourcemaps": "latest",
+		"gulp-watch": "latest"
+	}
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>颜色</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+		.cols{ border-radius: 4px; overflow: hidden; }
+    	li{ padding-top: 25%; font-family: consolas; }
+    	li:before{
+    		content: '\20';
+    		position: absolute;
+    		left: 0; top: 50%; right: 0; bottom: 0;
+    	}
+    	li.black-o:before{ background: #000; }
+    	li.white-o:before{ background: #f1f1f1; }
+    	li.blue-o:before{ background: #1b96ff; }
+    	li.yellow-o:before{ background: #fcea4d; }
+    	li.green-o:before{ background: #19a054; }
+    	li.red-o:before{ background: #e72b2b; }
+		li.gray-o:before{ background: #dcdcdc; }
+		li.pink-o:before{ background: #ff7582; }
+    	.text{
+    		position: absolute; z-index: 1;
+    		top: 50%; left: 50%;
+    		transform: translate(-50%, -50%);
+		}
+		li:hover:before{
+			animation: sliding .5s ease;
+		}
+    	h3{ margin: 10px 0; }
+    	@media (max-width: 720px){
+    		li{ padding-top: 33.3333333%; }
+		}
+		@keyframes sliding {
+			0%{ top: 50%; }
+			30%{ top: 45%; }
+			60%{ top: 55%; }
+			100%{ top: 50%; }
+		}
+    </style>
+</head>
+<body>
+
+<article class="article">
+	<h1>颜色</h1>
+
+	<section class="section">
+		<p>颜色的类名、主色 & 副色</p>
+		<br>
+		<ul class="cols">
+			<li class="col-25 col-md-33 rows black-o">
+				<div class="text">
+					<p>#2a2a2a</p>
+					<h3>.black</h3>
+					<p>#000</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows white-o">
+				<div class="text">
+					<p>#fff</p>
+					<h3>.white</h3>
+					<p>#f1f1f1</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows blue-o">
+				<div class="text">
+					<p>#258de6</p>
+					<h3>.blue</h3>
+					<p>#1b96ff</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows yellow-o">
+				<div class="text">
+					<p>#ffd832</p>
+					<h3>.yellow</h3>
+					<p>#fcea4d</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows green-o">
+				<div class="text">
+					<p>#279657</p>
+					<h3>.green</h3>
+					<p>#19a054</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows red-o">
+				<div class="text">
+					<p>#da2323</p>
+					<h3>.red</h3>
+					<p>#e72b2b</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows gray-o">
+				<div class="text">
+					<p>#e6e6e6</p>
+					<h3>.gray</h3>
+					<p>#dcdcdc</p>
+				</div>
+			</li>
+			<li class="col-25 col-md-33 rows pink-o">
+				<div class="text">
+					<p>#ff5f6e</p>
+					<h3>.pink</h3>
+					<p>#ff7582</p>
+				</div>
+			</li>
+		</ul>
+	</section>
+</article>
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>标签页</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/prism.css">
+	<style>
+		.blocker{
+			background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+		}
+	</style>
+</head>
+<body>
+
+<article class="article">
+	<h1>标签页</h1>
+
+	<section class="section">
+		<h2>结构</h2>
+		<p>容器需带有<code>[masiv-tabs]</code>属性，标签导航与标签页间使用<code>[masiv-nav]</code>与<code>[masiv-tab]</code>属性通信，它们的值必须一致。</p>
+		<p>每个tab关闭打开时都会触发相应的触发<code>close</code>或<code>open</code>事件。</p>
+		<div class="widget">
+			<nav class="navs" masiv-tabs="queen">
+				<a class="nav msv-active" masiv-tab="love">窗口</a>
+				<a class="nav" masiv-tab="of">晴天</a>
+				<a class="nav" masiv-tab="my">题破山寺后禅院</a>
+				<a class="nav" masiv-tab="life">事件监听</a>
+			</nav>
+			<div class="tab msv-active" masiv-tab="love" masiv-taber="queen">
+				<div class="blocker">TAB</div>
+			</div>
+			<div class="tab" masiv-tab="of" masiv-taber="queen">
+				<div class="blocker">
+					<p>Re So So Si Do Si La</p>
+					<p>So La Si Si Si Si La Si La So</p>
+				</div>
+			</div>
+			<div class="tab" masiv-tab="my" masiv-taber="queen">
+				<div class="blocker">清晨入古寺</div>
+			</div>
+			<div class="tab" masiv-tab="life" masiv-taber="queen"></div>
+		</div>
+		<code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;nav class="navs" masiv-tabs="queen">
+	&lt;a class="nav msv-active" masiv-tab="love">窗口&lt;/a>
+	&lt;a class="nav" masiv-tab="of">晴天&lt;/a>
+	&lt;a class="nav" masiv-tab="my">题破山寺后禅院&lt;/a>
+	&lt;a class="nav" masiv-tab="life">事件监听&lt;/a>
+&lt;/nav>
+
+&lt;div class="tab msv-active" masiv-tab="love" masiv-taber="queen">
+	&lt;p>白日依山尽，黄河入海流。&lt;/p>
+	&lt;p>欲穷千里目，更上一层楼。&lt;/p>
+&lt;/div>
+
+&lt;div class="tab" masiv-tab="of" masiv-taber="queen">
+	&lt;div class="blocker">
+		&lt;p>Re So So Si Do Si La&lt;/p>
+		&lt;p>So La Si Si Si Si La Si La So&lt;/p>
+	&lt;/div>
+&lt;/div>
+
+&lt;div class="tab" masiv-tab="my" masiv-taber="queen">
+	&lt;div class="blocker">清晨入古寺&lt;/div>
+&lt;/div>
+
+&lt;div class="tab" masiv-tab="life" masiv-taber="queen">&lt;/div>
+    </code>
+</pre>
+		<code>JS</code>
+<pre class="language-js">
+    <code class="language-js">
+M('[masiv-tab="life"]').on('open', function(){
+	this.innerHTML = '&lt;div class="blocker">'+ M.time(new Date(), 'h:m:s') +'&lt;/div>';
+});
+    </code>
+</pre>
+	</section>
+</article>
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+	M('[masiv-tab="life"]').on('open', function(){
+		this.innerHTML = '<div class="blocker">'+ M.time(new Date(), 'h:m:s') +'</div>';
+	});
+</script>
+</body>
+</html>

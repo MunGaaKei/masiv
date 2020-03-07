@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>表单</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>表单</h1>
+	<p>每个表单行使用<code>.field</code>容器。</p>
+
+	<section class="section">
+		<h2>输入框</h2>
+		<p>为了直接绑定标签与输入内容，输入框与文本域建议使用<code>&lt;label&gt;</code>标签包裹，并且在该标签上加上<code>.label-input</code>类或者<code>.label-inline</code>类。</p>
+		<p><code>.group</code>类用于合并按钮、输入框等的圆角。</p>
+		<div class="widget">
+			<div class="field">
+				<label class="label-input">
+					<span class="label">用户名：</span>
+					<input type="text" class="input" autocomplete="off">
+				</label>
+				<label class="label-input">
+					<span class="label">密码：</span>
+					<input type="password" class="input" autocomplete="off">
+				</label>
+			</div>
+			<div class="field">
+				<label class="label-inline">
+					<span class="label">邮箱：</span>
+					<div class="group">
+						<input type="email" class="input" autocomplete="off">
+						<a class="btn blue-o">检测</a>
+					</div>
+				</label>
+			</div>
+			<div class="field">
+				<label class="label-inline">
+					<span class="label">备注：</span>
+					<textarea class="textarea" rows="3"></textarea>
+				</label>
+			</div>
+			<div class="cols">
+				<button class="btn black-o right" type="submit">提交表单</button>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="field">
+	&lt;label class="label-input">
+		&lt;span class="label">用户名：&lt;/span>
+		&lt;input type="text" class="input" autocomplete="off">
+	&lt;/label>
+	&lt;label class="label-input">
+		&lt;span class="label">密码：&lt;/span>
+		&lt;input type="password" class="input error" autocomplete="off">
+	&lt;/label>
+&lt;/div>
+&lt;div class="field">
+	&lt;label class="label-inline">
+		&lt;span class="label">邮箱：&lt;/span>
+		&lt;div class="group">
+			&lt;input type="email" class="input" autocomplete="off">
+			&lt;a class="btn blue-o">检测&lt;/a>
+		&lt;/div>
+	&lt;/label>
+&lt;/div>
+&lt;div class="field">
+	&lt;label class="label-inline">
+		&lt;span class="label">备注：&lt;/span>
+		&lt;textarea class="textarea" rows="3">&lt;/textarea>
+	&lt;/label>
+&lt;/div>
+&lt;div class="cols">
+	&lt;button class="btn black-o right" type="submit">提交表单&lt;/button>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section p">
+		<h2>选择器</h2>
+		<p><code>[selected]</code>代表选中项，<code>[disabled]</code>则代表不可选中项。如果想要使整个选择器禁用，则需在<code>[masiv-dropmenu]</code>容器上加上<code>[disabled]</code>属性。</p>
+		<div class="widget">
+			<div class="field">
+				<label class="label-input">
+					<span class="label">星座：</span>
+					<div class="select" masiv-dropmenu>
+						<input type="text" class="input" readonly value="处女座">
+						<span class="caret"></span>
+						<ul class="dropmenu">
+							<li class="li" data-value="摩羯座">摩羯座</li>
+							<li class="li" data-value="处女座" selected>处女座</li>
+							<li class="li" data-value="水瓶座" disabled>水瓶座</li>
+							<li class="li" data-value="白羊座">白羊座</li>
+							<li class="li" data-value="金牛座">金牛座</li>
+							<li class="li" data-value="双子座">双子座</li>
+							<li class="li" data-value="狮子座">狮子座</li>
+							<li class="li" data-value="天秤座">天秤座</li>
+							<li class="li" data-value="射手座">射手座</li>
+							<li class="li" data-value="天蝎座">天蝎座</li>
+							<li class="li" data-value="双鱼座">双鱼座</li>
+							<li class="li" data-value="巨蟹座">巨蟹座</li>
+						</ul>
+					</div>
+				</label>
+				<label class="label-input">
+					<span class="label">生肖：</span>
+					<div class="select" masiv-dropmenu>
+						<input type="text" class="input">
+						<ul class="dropmenu">
+							<li class="li" data-value="🐒">🐒</li>
+							<li class="li" data-value="🐕">🐕</li>
+							<li class="li" data-value="🐖">🐖</li>
+						</ul>
+					</div>
+				</label>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="field">
+	&lt;label class="label-input">
+		&lt;span class="label">星座：&lt;/span>
+		&lt;div class="select" masiv-dropmenu>
+			&lt;input type="text" class="input" readonly value="处女座">
+			&lt;span class="caret">&lt;/span>
+			&lt;ul class="dropmenu">
+				&lt;li class="li" data-value="摩羯座">摩羯座&lt;/li>
+				&lt;li class="li" data-value="处女座" selected>处女座&lt;/li>
+				&lt;li class="li" data-value="水瓶座" disabled>水瓶座&lt;/li>
+				...
+				&lt;li class="li" data-value="巨蟹座">巨蟹座&lt;/li>
+			&lt;/ul>
+		&lt;/div>
+	&lt;/label>
+	&lt;label class="label-input">
+		&lt;span class="label">生肖：&lt;/span>
+		&lt;div class="select" masiv-dropmenu>
+			&lt;input type="text" class="input">
+			&lt;ul class="dropmenu">
+				&lt;li class="li" data-value="🐒">🐒&lt;/li>
+				&lt;li class="li" data-value="🐕">🐕&lt;/li>
+				&lt;li class="li" data-value="🐖">🐖&lt;/li>
+			&lt;/ul>
+		&lt;/div>
+	&lt;/label>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>单选框</h2>
+		<p><code>&lt;label&gt;</code>使用<code>.label-radio</code>类。</p>
+		<div class="widget">
+			<div class="field">
+				<label class="label">性别：</label>
+				<label class="label-radio"><input type="radio" class="radio" name="sex">男</label>
+				<label class="label-radio"><input type="radio" class="radio" name="sex">女</label>
+			</div>
+			<div class="field">
+				<label class="label">水果：</label>
+				<div>
+					<label class="label-radio"><input type="radio" class="radio" name="fruit" checked>西瓜</label>
+					<label class="label-radio"><input type="radio" class="radio" name="fruit">苹果</label>
+					<label class="label-radio"><input type="radio" class="radio" name="fruit">香蕉</label>
+				</div>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="field">
+	&lt;label class="label">性别：&lt;/label>
+	&lt;label class="label-radio">&lt;input type="radio" class="radio" name="sex">男&lt;/label>
+	&lt;label class="label-radio">&lt;input type="radio" class="radio" name="sex">女&lt;/label>
+&lt;/div>
+&lt;div class="field">
+	&lt;label class="label">水果：&lt;/label>
+	&lt;div>
+		&lt;label class="label-radio">&lt;input type="radio" class="radio" name="fruit" checked>西瓜&lt;/label>
+		&lt;label class="label-radio">&lt;input type="radio" class="radio" name="fruit">苹果&lt;/label>
+		&lt;label class="label-radio">&lt;input type="radio" class="radio" name="fruit">香蕉&lt;/label>
+	&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>多选框</h2>
+		<p><code>&lt;label&gt;</code>使用<code>.label-checkbox</code>类。</p>
+		<div class="widget">
+			<div class="field">
+				<label class="label-checkbox"><input type="checkbox" class="checkbox" checked>请记住我</label>
+				<label class="label-checkbox"><input type="checkbox" class="checkbox">我已阅读同意条款</label>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="field">
+	&lt;label class="label-checkbox">&lt;input type="checkbox" class="checkbox" checked>请记住我&lt;/label>
+	&lt;label class="label-checkbox">&lt;input type="checkbox" class="checkbox">我已阅读同意条款&lt;/label>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>不同类型的输入框</h2>
+		<p><a href="input.html" class="link">查看更多</a>的输入框类型，如<code>file</code>、<code>calendar</code>等。</p>
+	</section>
+</article>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/plugins/M.input.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

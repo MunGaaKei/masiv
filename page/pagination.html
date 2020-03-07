@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>分页</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+
+<article class="article">
+	<h1>分页</h1>
+
+	<section class="section">
+		<h2>生成</h2>
+		<p>简单的构建，只需要一个容器。</p>
+		<div class="widget">
+			<div id="page-a" class="pages"></div>
+		</div>
+<pre class="language-js">
+    <code class="language-js">
+M('#page-a').page(1, 7);
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>参数设置</h2>
+		<p><code>page()</code>函数可以通过第三个参数进行其它配置</p>
+		<div class="widget">
+			<div id="page-b" class="pages"></div>
+		</div>
+<pre class="language-js">
+    <code class="language-js">
+M('#page-b').page(1, 13, {
+	prev: '&lt;i class="iconfont icon-left">&lt;/i>',
+	next: '&lt;i class="iconfont icon-right">&lt;/i>',
+	click: function( p ){
+		this.classList.add('is-loading');
+		setTimeout(function(){
+			M('#page-b').page(p, 13);
+		}, 500);
+	}
+});
+    </code>
+</pre>
+		<p>只显示<code>上一页</code>和<code>下一页</code>。</p>
+		<div class="widget">
+			<div id="page-c" class="pages"></div>
+		</div>
+<pre class="language-js">
+    <code class="language-js">
+M('#page-c').page(1, 19, {
+	siblings: false,
+	prev: '上一页',
+	next: '下一页'
+});
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>参数说明</h2>
+		<p><code>page(p, pages[, options])</code>函数的参数说明。</p>
+		<p>第一个参数<code>p</code>为当前页码数；</p>
+		<p>第二个参数<code>pages</code>为总页码数；</p>
+		<p>第三个参数<code>[options]</code>为一个对象，用于配置分页的样式。</p>
+		<div class="widget" style="overflow: auto;">
+			<table class="table">
+				<thead><th>参数</th><th>默认值</th><th>说明</th></thead>
+				<tbody>
+					<tr><td>href</td><td>false</td><td>传入<code>url</code>字符串会在页码上添加<code>href</code>属性并且值为该值加上页码组成的字符串。</td></tr>
+					<tr><td>prev</td><td>false</td><td>传入字符串显示上一页。</td></tr>
+					<tr><td>next</td><td>false</td><td>传入字符串显示下一页。</td></tr>
+					<tr><td>siblings</td><td>2</td><td>当前页的相邻页码数，当值为<code>false</code>时则只显示<code>上页</code>和<code>下页</code></td></tr>
+					<tr><td>pageClass</td><td>"page"</td><td>页码按钮的基础类名</td></tr>
+					<tr><td>activeClass</td><td>"active"</td><td>当前页码按钮的激活类名</td></tr>
+					<tr><td>dots</td><td>"┅"</td><td>省略页码显示字符串</td></tr>
+					<tr><td>click</td><td>false</td><td>页码点击回调函数</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</article>
+
+
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+	(function(){
+		M('#page-a').page(1, 7);
+		M('#page-b').page(1, 13, {
+			prev: '<i class="iconfont icon-left"></i>',
+			next: '<i class="iconfont icon-right"></i>',
+			siblings: 3,
+			click: function( p ){
+				this.classList.add('is-loading');
+				setTimeout(function(){
+					M('#page-b').page(p, 13);
+				}, 500);
+			}
+		});
+		M('#page-c').page(1, 19, {
+			siblings: false,
+			prev: '上一页',
+			next: '下一页'
+		});
+	})();
+</script>
+</body>
+</html>

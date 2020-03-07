@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>主题</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link id="theme" rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>主题</h1>
+
+	<section class="section">
+        <h2>选择</h2>
+        <p>在<code>/themes</code>文件夹里，存放着主题预设方案，修改里面的<span class="blue">scss</span>并编译即可。下面是<code>/default</code>文件夹说明：</p>
+<pre class="language-js">
+    <code class="language-js">
+├── default
+|   ├─ var.scss             /* 变量设置 */
+|   ├─ reset.scss           /* 默认样式重置 */
+|   ├─ components.scss      /* 组件样式 */
+|   ├─ plugin.scss          /* 插件样式 */
+|   ├─ custom.scss          /* 自定义添加的样式 */
+|   └─ masiv.css            /* 默认编译出来的 css 文件，可忽略 */
+    </code>
+</pre>
+    </section>
+    
+    <section class="section">
+        <h2>命名空间</h2>
+        <p>默认使用并且推荐的是简洁的无前缀类名，如：<code>.table</code>、<code>.blue</code>等。</p>
+        <p>在必要的情况下（为了某些功能必须要引入其它的框架，产生类名冲突问题），可以在<code>var.scss</code>文件里设置<code>$m</code>变量值，开启类名前缀功能。</p>
+        <p>假设<code>$m</code>变量值为: <b>msv-</b>，此时<code>.table</code>组件使用<code>.msv-table</code>类名来修饰。</p>
+        <p>部分功能组件如果需要使用到<code>masiv.js</code>文件，则还需要在页面的<code>&ltbody></code>标签设置属性<code>[masiv-namespace]</code>，值即为前缀字符串。</p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+&lt;/head>
+&lt;body masiv-namespace="msv-">
+
+    &lt;!-- HTML Codes -->
+
+&lt;/body>
+&lt;/html>
+    </code>
+</pre>
+    </section>
+</article>
+
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

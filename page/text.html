@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>文本</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>文本</h1>
+
+	<section class="section">
+		<h2>链接</h2>
+		<p>作用在<code>.link</code>类上。初始的<code>&lt;a></code>标签已经消除本身自带的颜色表现，而<a href="javascript:;" class="link">链接</a>会还原本来的颜色。</p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a href="javascript:;" class="link">链接&lt;/a>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>段落</h2>
+		<p>在容器加上<code>.p</code>类，里面的<code>&lt;p&gt;</code>标签则会有相应表现。</p>
+		<div class="widget p">
+			<p>消失的舊時光一九四三在回憶的路上時間變好慢</p>
+			<p>老街坊小弄堂是屬於那年代白牆黑瓦的淡淡的憂傷</p>
+			<p>消失的舊時光一九四三回頭看的片段有一些風霜<br>老唱盤舊皮箱裝滿了明信片的鐵盒裡藏著一片玫瑰花瓣</p>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="p">
+	&lt;p>消失的舊時光一九四三在回憶的路上時間變好慢&lt;/p>
+	&lt;p>老街坊小弄堂是屬於那年代白牆黑瓦的淡淡的憂傷&lt;/p>
+	&lt;p>消失的舊時光一九四三回頭看的片段有一些風霜&lt;br>老唱盤舊皮箱裝滿了明信片的鐵盒裡藏著一片玫瑰花瓣&lt;/p>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>引用</h2>
+		<p>作用在<code>&lt;blockquote&gt;</code>标签上。</p>
+		<div class="widget">
+			<blockquote>Glorious road is narrow, a person can only move forward, not backward; so you should continue in this one narrow road moving forward, because many people are in competition behind you, a bear with a.</blockquote>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;blockquote> Glorious road is narrow ... &lt;/blockquote>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>字符</h2>
+		<p>键位<kbd>kbd</kbd>与代码<code>code</code>。</p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;kbd>kbd&lt;/kbd>
+&lt;code>code&lt;/code>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>标签</h2>
+		<p>作用在<code>.tag</code>类上，可以与颜色类搭配。</p>
+		<div class="widget cols">
+			<span class="tag">默认</span>
+			<a class="tag blue-o">蓝色</a>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;span class="tag">默认&lt;/span>
+&lt;a class="tag blue-o">蓝色&lt;/a>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>徽章</h2>
+		<p>作用在<code>.badge</code>类上，当内容为空时不会显示。</p>
+		<div class="widget">
+			<div class="group">
+				<a class="btn blue-o">好友<span class="badge">9</span></a>
+				<a class="btn yellow-o">私信<span class="badge black-o">20+</span></a>
+				<a class="btn black-o">黑名单<span class="badge"></span></a>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="group">
+	&lt;a class="btn blue-o">好友&lt;span class="badge">9&lt;/span>&lt;/a>
+	&lt;a class="btn yellow-o">私信&lt;span class="badge black-o">20+&lt;/span>&lt;/a>
+	&lt;a class="btn black-o">黑名单&lt;span class="badge">&lt;/span>&lt;/a>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+</article>
+
+<script src="../js/prism.js"></script>
+</body>
+</html>

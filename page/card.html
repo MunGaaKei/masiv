@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>卡片</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/prism.css">
+	<style>
+	.blocker{
+		background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+		 background-blend-mode: multiply,multiply;
+		 color: #fff;
+	}
+	</style>
+</head>
+<body>
+
+<article class="article">
+	<h1>卡片</h1>
+
+	<section class="section">
+		<h2>样例</h2>
+		<p>卡片还可以搭配颜色类进行使用。</p>
+		<div class="widget">
+			<div class="card">
+				<header>席慕蓉的诗<a class="right iconfont icon-close"></a></header>
+				<div class="content">
+					<p>溪水急着要流向海洋</p>
+					<p>浪潮却渴望重回土地</p>
+					<p>在绿树白花的篱前</p>
+					<p>曾那样轻易地挥手道别</p>
+					<p>而沧桑的二十年后</p>
+					<p>我们的魂魄却夜夜归来</p>
+					<p>微风拂过时</p>
+					<p>便化作满园的郁香</p>
+				</div>
+				<footer>
+					<span class="tag yellow-o">席慕蓉</span>
+					<span class="tag">诗集</span>
+				</footer>
+			</div>
+			<div class="card">
+				<header>
+					<b>收藏</b>
+					<a class="iconfont icon-heart red right"></a>
+				</header>
+				<div class="blocker">PHOTOGRAPH</div>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="card">
+	&lt;header>席慕蓉的诗&lt;a class="right iconfont icon-close">&lt;/a>&lt;/header>
+	&lt;div class="content">
+		&lt;p>溪水急着要流向海洋&lt;/p>
+		&lt;p>浪潮却渴望重回土地&lt;/p>
+		&lt;p>...&lt;/p>
+		&lt;p>便化作满园的郁香&lt;/p>
+	&lt;/div>
+	&lt;footer>
+		&lt;span class="tag yellow-o">席慕蓉&lt;/span>
+		&lt;span class="tag">诗集&lt;/span>
+	&lt;/footer>
+&lt;/div>
+
+&lt;div class="card">
+	&lt;header>
+		&lt;b>收藏&lt;/b>
+		&lt;a class="right iconfont icon-more red">&lt;/a>
+	&lt;/header>
+	&lt;div class="blocker">PHOTOGRAPH&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+</article>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

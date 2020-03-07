@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>提示</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>提示</h1>
+
+	<section class="section">
+		<h2>使用</h2>
+        <p>需要触发的元素添加上属性<code>masiv-tip</code>，属性值为tip内容。</p>
+		<div class="widget">
+			<a class="btn" masiv-tip="由鼠标悬停触发">悬停</a>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a class="btn" masiv-tip="由鼠标悬停触发">悬停&lt;/a>
+    </code>
+</pre>
+	</section>
+
+    <section class="section">
+        <h2>参数选项设置</h2>
+        <p>也可以通过<code>JS</code>进行设置，这个方式提供更多的功能选择。</p>
+        <div class="widget">
+            <input id="name" type="text" class="input col-5" autocomplete="off" placeholder="获取焦点时触发">
+        </div>
+<pre class="language-js">
+    <code class="language-js">
+M('#name').tip({
+    html: '&lt;ul>&lt;li>1、请输入 2 个或 2 个以上的字符&lt;/li>&lt;li>2、输入的字符串不含空格&lt;/li>&lt;li>3、不可输入敏感字符&lt;/li>&lt;/ul>',
+    color: 'blue-o',
+    active: 'focus',
+    deactive: 'blur'
+});
+    </code>
+</pre>
+    </section>
+
+    <section class="section">
+        <h2>参数说明</h2>
+        <div class="widget" style="overflow: auto;">
+            <table class="table">
+                <thead><th>参数</th><th>默认值</th><th>说明</th></thead>
+                <tbody>
+                    <tr><td>html</td><td>null</td><td>内容字符串</td></tr>
+                    <tr><td>color</td><td>black-o</td><td>修饰的颜色类名</td></tr>
+                    <tr><td>active</td><td>mouseenter</td><td>触发显示提示的事件类型</td></tr>
+                    <tr><td>deactive</td><td>mouseleave</td><td>触发隐藏提示的事件类型</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+    M(document).on('ready', function(){
+        M('#name').tip({
+            html: '<ul><li>1、请输入 2 个或 2 个以上的字符</li><li>2、输入的字符串不含空格</li><li>3、不可输入敏感字符</li></ul>',
+            color: 'blue-o',
+            active: 'focus',
+            deactive: 'blur'
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>开发文档</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link id="theme" rel="stylesheet" href="../css/masiv.css">
+	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
+	<style>
+		.nav{
+			position: relative;
+		}
+		.nav:after{
+			content: '\20';
+			position: absolute; z-index: -1;
+			left: 8px; top: 12px;
+			width: .5em; height: 1em;
+			min-width: 8px;
+			background-color: #cce0cc;
+			border-radius: 4px;
+			transition: all .24s;
+		}
+		.nav:hover{
+			background-color: transparent;
+		}
+		.nav:hover:after{
+			width: 40%; left: 12px;
+		}
+		@media (max-width: 780px) {
+			.drawer{
+				min-width: 160px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="room rows">
+
+		<header class="header">
+			<div class="main cols padless">
+				<a class="nav" masiv-sidebar="#masiv-menu"><i class="iconfont icon-list"></i></a>
+				<nav class="navs right">
+					<a href="../index.html" class="nav iconfont icon-home"></a>
+					<!-- <a href="faq.html" class="nav" target="pages">FAQs</a> -->
+					<a href="https://github.com/MunGaaKei/mavis" class="nav iconfont icon-github" target="_blank"></a>
+				</nav>
+			</div>
+		</header>
+
+		<main class="main n cols padless">
+
+			<aside id="masiv-menu" class="sidebar">
+				<ul class="drawer">
+					<li><a class="li" target="pages" href="start.html">起步</a></li>
+					<li><a class="li" target="pages" href="m.html"><b style="font-family: -webkit-pictograph;">M</b></a></li>
+					<li><a class="li" target="pages" href="layout.html">布局</a></li>
+					<li><a class="li" target="pages" href="themes.html">主题</a></li>
+					<li><a class="li" target="pages" href="iconfont.html">图标</a></li>
+					<li><a class="li" target="pages" href="button.html">按钮</a></li>
+					<li><a class="li" target="pages" href="text.html">文本</a></li>
+					<li><a class="li" target="pages" href="form.html">表单</a></li>
+					<li><a class="li" target="pages" href="table.html">表格</a></li>
+					<li><a class="li" target="pages" href="list.html">列表</a></li>
+					<li><a class="li" target="pages" href="dropmenu.html">下拉菜单</a></li>
+					<li><a class="li" target="pages" href="card.html">卡片</a></li>
+					<li><a class="li" target="pages" href="loading.html">加载</a></li>
+					<li><a class="li" target="pages" href="tab.html">标签页</a></li>
+					<li><a class="li" target="pages" href="collapse.html">折叠面板</a></li>
+					<li><a class="li" target="pages" href="tip.html">提示</a></li>
+					<li><a class="li" target="pages" href="pagination.html">分页</a></li>
+					<li><a class="li" target="pages" href="dialog.html">对话框</a></li>
+					<li><a class="li" target="pages" href="message.html">消息</a></li>
+					<li><a class="li" target="pages" href="drag.html">拖拽</a></li>
+					<li><a class="li" target="pages" href="tree.html">树</a></li>
+					<li><a class="li" target="pages" href="scrollspy.html">滚动监听</a></li>
+					<li><a class="li" target="pages" href="slide.html">轮播</a></li>
+					<li><a class="li" target="pages" href="player.html">播放器</a></li>
+				</ul>
+			</aside>
+
+			<iframe src="button.html" name="pages" class="iframe n"></iframe>
+
+		</main>
+
+	</div>
+
+<script src="../js/masiv.js"></script>
+</body>
+</html>

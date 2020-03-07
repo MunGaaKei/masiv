@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>树</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+        [node-toggler]{ transition: transform .24s; }
+        .opened [node-toggler]{ transform: rotateX(180deg); }
+    </style>
+</head>
+<body>
+
+<article class="article">
+	<h1>树</h1>
+    <p>引入<code class="blue-o">JS</code></p>
+<pre class="language-js">
+    <code class="language-js">
+&lt;script src="js/M.tree.js">&lt;/script>
+    </code>
+</pre>
+    <p>另外，由于该插件默认使用<a href="iconfont.html" class="link">iconfont</a>字体图标，所以还需要引入相应的<code class="pink-o">CSS</code>。或者你可以使用别的字体图标，在这个情况下你需要重新设置部分属性（参考<a href="#params" class="link">设置说明</a>）。</p>
+
+	<section class="section">
+        <h2>初始化</h2>
+        <p>使用一个<code>&lt;ul&gt;</code>作为容器，传入数据生成对应节点。</p>
+        <div class="widget">
+            <ul id="menu"></ul>
+        </div>
+<code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;ul id="menu">&lt;/ul>
+    </code>
+</pre>
+        <code>JS</code>
+<pre class="language-js">
+    <code class="language-js">
+var data = [{
+        name: '介绍',
+        attr: { type: '属性' },
+        open: true,
+        children: [{
+            name: '起步',
+            href: 'start.html'
+        }]
+    }, ..., {
+        icon: '&lt;i class="iconfont icon-plugin">&lt;/i>',
+        name: '插件',
+        children: [{
+            icon: '&lt;i class="iconfont icon-tree">&lt;/i>',
+            name: '树',
+            href: 'tree.html'
+        }, ...]
+    }];
+
+M('#menu').tree({
+    data: data
+});
+    </code>
+</pre>
+    </section>
+    
+    <section class="section">
+        <h2>初始参数属性说明</h2>
+        <div class="widget">
+            <table class="table">
+                <thead><th>参数</th><th>默认值</th><th>说明</th></thead>
+                <tbody>
+                    <tr><td>data</td><td>[]</td><td><code class="red-o">必需</code>，节点数据结构</td></tr>
+                    <tr><td>checkbox</td><td>false</td><td>开启选择框功能</td></tr>
+                    <tr><td>checked</td><td>'&lt;i class="iconfont icon-checked">&lt;/i>'</td><td>选中按钮图标</td></tr>
+                    <tr><td>unchecked</td><td>'&lt;i class="iconfont icon-unchecked">&lt;/i>'</td><td>未选中按钮图标</td></tr>
+                    <tr><td>folder</td><td>'&lt;i class="iconfont icon-folder">&lt;/i>'</td><td>文件夹图标</td></tr>
+                    <tr><td>item</td><td>'&lt;i class="iconfont icon-file">&lt;/i>'</td><td>子项图标</td></tr>
+                    <tr><td>toggler</td><td>'&lt;i class="iconfont icon-down">&lt;/i>'</td><td>展开收缩图标</td></tr>
+                    <tr><td>target</td><td>undefined</td><td>同<code>&lt;a&gt;</code>标签属性</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>节点属性设置说明</h2>
+        <div class="widget">
+            <table class="table">
+                <thead><th>属性</th><th>默认值</th><th>说明</th></thead>
+                <tbody>
+                    <tr><td>name</td><td>''</td><td><code class="red-o">必需</code>，节点名称</td></tr>
+                    <tr><td>attr</td><td>undefined</td><td>对象 {} 类型节点自定义属性</td></tr>
+                    <tr><td>checked</td><td>false</td><td>是否默认选中该节点</td></tr>
+                    <tr><td>href</td><td>undefined</td><td>链接</td></tr>
+                    <tr><td>target</td><td>undefined</td><td>同<code>&lt;a&gt;</code>标签属性，会覆盖初始化时的设置</td></tr>
+                    <tr><td>icon</td><td>undefined</td><td>字符串类型，节点图标，设置了会覆盖初始化时的设置</td></tr>
+                    <tr><td>children</td><td>null</td><td>数组 [] 类型，同初始化数据格式，子节点数据</td></tr>
+                    <tr><td>open</td><td>false</td><td>是否默认打开该目录</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
+    
+<script src="../js/prism.js"></script>
+<script src="../js/masiv.js"></script>
+<script src="../js/plugins/M.tree.js"></script>
+<script>
+;M(function(){
+
+    var data = [{
+        name: '介绍',
+        attr: { type: '属性' },
+        open: true,
+        children: [{
+            name: '起步'
+        }]
+    }, {
+        name: '组件',
+        children: [{
+            name: '基础组件',
+            children: [{
+                name: '按钮',
+                href: 'button.html',
+                checked: true
+            }, {
+                icon: '<span>📃</span>',
+                name: '文本'
+            }, {
+                name: '表单',
+                icon: '<i class="iconfont icon-form"></i>'
+            }]
+        }, {
+            name: 'Javascript 支持',
+            children: [{
+                name: '分页'
+            }, {
+                name: '对话框'
+            }]
+        }]
+    }, {
+        icon: '<i class="iconfont icon-plugin"></i>',
+        name: '插件',
+        children: [{
+            icon: '<i class="iconfont icon-tree"></i>',
+            name: '树'
+        }, {
+            icon: '<i class="iconfont icon-youtube"></i>',
+            name: '播放器'
+        }]
+    }];
+
+    M('#menu').tree({
+        data: data
+    });
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>播放器</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>播放器</h1>
+    <p>引入<code class="blue-o">JS</code></p>
+<pre class="language-js">
+    <code class="language-js">
+&lt;script src="js/M.player.js">&lt;/script>
+    </code>
+</pre>
+    <p>另外，由于该插件默认使用<a href="iconfont.html" class="link">iconfont</a>字体图标，所以还需要引入相应的<code class="blue-o">CSS</code>。或者你可以使用别的字体图标，在这个情况下你需要重新设置部分属性（参考<a href="#params" class="link">设置说明</a>）。</p>
+
+	<section class="section">
+        <h2>初始化</h2>
+        <p>自动生成可以指定一个容器加上<code>[masiv-player]</code>属性，并指定<code>[data-src]</code>作为播放地址。<br>另外，还可以通过<code>[data-loop]</code>等<a class="link" href="#params">属性</a>来进行设置。</p>
+        <div class="widget">
+            <div id="masiv-video" masiv-player data-src="../resource/video.mp4"></div>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div id="masiv-demo" masiv-player data-src="resource/video.mp4">&lt;/div>
+    </code>
+</pre>
+        <code>JS</code>
+<pre class="language-js">
+    <code class="language-js">
+M('#masiv-video').player();
+    </code>
+</pre>
+    </section>
+
+    <section class="section">
+        <h2>更多可选参数的初始</h2>
+        <p>不使用<code>[masiv-player]</code>属性，用JS命令生成可以进行更多选项的设置。</p>
+        <div class="widget">
+            <div id="masiv-params"></div>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div id="#masiv-params">&lt;/div>
+    </code>
+</pre>
+        <code>JS</code>
+<pre class="language-js">
+    <code class="language-js">
+M('#masiv-params').player({
+    play: '&lt;b>PLAY&lt;/b>',
+    pause: '&lt;b>PAUSE&lt;/b>',
+    poster: '../resource/poster.jpg',
+    src: '../resource/video.mp4',
+    title: '示例视频'
+});
+    </code>
+</pre>
+    </section>
+
+    <section id="params" class="section">
+        <h2>参数属性说明</h2>
+        <div class="widget" style="overflow: auto;">
+            <table class="table">
+                <thead><th>参数</th><th>默认值</th><th>说明</th></thead>
+                <tbody>
+                    <tr><td>title<br>[data-src]</td><td>''</td><td>视频描述，默认位于视频左上角</td></tr>
+                    <tr><td>src<br>[data-src]</td><td><code class="red-o">必需</code></td><td>播放地址</td></tr>
+                    <tr><td>control<br>[data-control]</td><td>true</td><td>是否显示控制栏，值为<code>false</code>时隐藏</td></tr>
+                    <tr><td>loop<br>[data-loop]</td><td>false</td><td>是否循环播放</td></tr>
+                    <tr><td>autoplay<br>[data-autoplay]</td><td>false</td><td>是否自动播放</td></tr>
+                    <tr><td>time</td><td>true</td><td>是否显示播放时间，值为<code>false</code>时隐藏</td></tr>
+                    <tr><td>play</td><td>'&lt;i class="iconfont icon-play">&lt;/i>'</td><td>播放按钮</td></tr>
+                    <tr><td>pause</td><td>'&lt;i class="iconfont icon-pause">&lt;/i>'</td><td>暂停按钮</td></tr>
+                    <tr><td>stop</td><td>'&lt;i class="iconfont icon-stop">&lt;/i>'</td><td>停止按钮</td></tr>
+                    <tr><td>volume</td><td>'&lt;i class="iconfont icon-volume">&lt;/i>'</td><td>音量按钮</td></tr>
+                    <tr><td>mute</td><td>'&lt;i class="iconfont icon-mute">&lt;/i>'</td><td>静音按钮</td></tr>
+                    <tr><td>fullscreen</td><td>'&lt;i class="iconfont icon-fullscreen">&lt;/i>'</td><td>全屏按钮</td></tr>
+                    <tr><td>fullscreen-exit</td><td>'&lt;i class="iconfont icon-fullscreen-exit">&lt;/i>'</td><td>退出全屏按钮</td></tr>
+                    <tr><td>forward</td><td>'&lt;i class="iconfont icon-forward">&lt;/i>'</td><td>快进按钮</td></tr>
+                    <tr><td>backward</td><td>'&lt;i class="iconfont icon-backward">&lt;/i>'</td><td>后退按钮</td></tr>
+                    <tr><td>color</td><td>'blue-o'</td><td>进度条颜色类</td></tr>
+                    <tr><td>vol</td><td>.5</td><td>初始音量大小，范围为<code>[0, 1]</code></td></tr>
+                    <tr><td>forwardUnit</td><td>3</td><td>快进/后退单位，单位秒<code>s</code></td></tr>
+                    <tr><td>tip</td><td>true</td><td>是否显示提示，值为<code>false</code>时隐藏</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</article>
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/plugins/M.player.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+M(function(){
+    M('#masiv-params').player({
+        play: '<b>PLAY</b>',
+        pause: '<b>PAUSE</b>',
+        poster: '../resource/poster.jpg',
+        src: '../resource/video.mp4',
+        title: '示例视频',
+        time: false
+    });
+});
+</script>
+</body>
+</html>

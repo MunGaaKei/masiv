@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>消息</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+    	.message{ font-family: 'segoe print'; }
+    </style>
+</head>
+<body>
+
+<article class="article">
+	<h1>消息</h1>
+
+	<section class="section">
+		<h2>使用</h2>
+		<p>呼出消息的方法调用命令<code>M.message()</code>即可。</p>
+		<br>
+		<p><a id="call" class="btn">呼出消息</a></p>
+<pre class="language-js">
+    <code class="language-js">
+M.message('Look at the stars');
+
+M.message({
+	html: 'Yeah, they were all &lt;b>yellow&lt;/b>',
+	color: 'yellow-o'
+});
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>参数说明</h2>
+		<div class="widget" style="overflow: auto;">
+			<table class="table">
+				<thead><th>参数</th><th>默认值</th><th>说明</th></thead>
+				<tbody>
+					<tr><td>html</td><td class="red">【必需】</td><td>内容HTML字符串</td></tr>
+					<tr><td>color</td><td>null</td><td>修饰类名字符串</td></tr>
+					<tr><td>timeout</td><td>2019</td><td>消息存活时间，单位<code>ms</code></td></tr>
+					<tr><td>dismiss</td><td>'click'</td><td>消失触发事件类型</td></tr>
+					<tr><td>max</td><td>3</td><td>最多同时存在多少条消息</td></tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</article>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+;(function(){
+
+	var messages = ['Look at the stars', 'Look how they shine for you', 'And everything you do', 'Yeah, they were all <b>yellow</b>'];
+	var color = ['yellow-o', 'black-o'];
+	var rand = function( n ){
+		return ~~(Math.random() * n);
+	}
+
+	document.getElementById('call').addEventListener('click', function(){
+		M.message({
+            html: messages[rand(4)],
+			color: color[rand(2)],
+			max: false
+        });
+	});
+
+})();
+</script>
+</body>
+</html>

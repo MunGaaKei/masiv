@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>折叠面板</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>折叠面板</h1>
+
+	<section class="section">
+		<h2>结构</h2>
+		<p>容器带有<code>[masiv-collapse]</code>属性，触发器为<code>.question</code>类，内容则使用<code>.answer</code>类。</p>
+		<div class="widget">
+			<div masiv-collapse>
+				<h4 class="question on">人物形象</h4>
+				<div class="answer">人物形象的核心是人物的思想性格，人物描写的角度有正面描写和侧面描写。正面描写包括外貌、语言、动作、神态、心理描写；侧面描写(又叫侧面烘托）指以他人言行来反映人物等。</div>
+				<h4 class="question">故事情节</h4>
+				<div class="answer">指作品所描写的事件发展，演变的全过程。故事情节的结构：（序幕）－开端－发展－高潮－结局－（尾声）用以展示人物性格，表现作品主题。</div>
+				<h4 class="question">环境描写</h4>
+				<div class="answer">指对人物活动的环境和事情发生的背景作描写。环境描写分为自然环境和社会环境。自然环境描写是指对人物活动的时间，地点，季节，气候及花草鸟虫的描写；社会环境描写是指对人物活动的具体背景，处所，氛围以及人际关系等作描写。</div>
+			</div>
+		</div>
+		<code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div masiv-collapse>
+	&lt;h4 class="question on">人物形象&lt;/h4>
+	&lt;div class="answer">人物形象的核心是人物的思想性格，人物描写的角度有正面描写和侧面描写。正面描写包括外貌、语言、动作、神态、心理描写；侧面描写(又叫侧面烘托）指以他人言行来反映人物等。&lt;/div>
+	&lt;h4 class="question">故事情节&lt;/h4>
+	&lt;div class="answer">指作品所描写的事件发展，演变的全过程。故事情节的结构：（序幕）－开端－发展－高潮－结局－（尾声）用以展示人物性格，表现作品主题。&lt;/div>
+	&lt;h4 class="question">环境描写&lt;/h4>
+	&lt;div class="answer">指对人物活动的环境和事情发生的背景作描写。环境描写分为自然环境和社会环境。自然环境描写是指对人物活动的时间，地点，季节，气候及花草鸟虫的描写；社会环境描写是指对人物活动的具体背景，处所，氛围以及人际关系等作描写。&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+		
+		<p>如果只希望最多只有一个项是打开状态，则需将<code>[masiv-collapse]</code>值设为<code>one</code>。</p>
+		<div class="widget">
+			<div masiv-collapse="one">
+				<h4 class="question">人物形象</h4>
+				<div class="answer">人物形象的核心是人物的思想性格，人物描写的角度有正面描写和侧面描写。正面描写包括外貌、语言、动作、神态、心理描写；侧面描写(又叫侧面烘托）指以他人言行来反映人物等。</div>
+				<h4 class="question">故事情节</h4>
+				<div class="answer">指作品所描写的事件发展，演变的全过程。故事情节的结构：（序幕）－开端－发展－高潮－结局－（尾声）用以展示人物性格，表现作品主题。</div>
+				<h4 class="question">环境描写</h4>
+				<div class="answer">指对人物活动的环境和事情发生的背景作描写。环境描写分为自然环境和社会环境。自然环境描写是指对人物活动的时间，地点，季节，气候及花草鸟虫的描写；社会环境描写是指对人物活动的具体背景，处所，氛围以及人际关系等作描写。</div>
+			</div>
+		</div>
+		<code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div masiv-collapse="one">
+	&lt;h4 class="question">人物形象&lt;/h4>
+	&lt;div class="answer">人物形象的核心是人物的思想性格，人物描写的角度有正面描写和侧面描写。正面描写包括外貌、语言、动作、神态、心理描写；侧面描写(又叫侧面烘托）指以他人言行来反映人物等。&lt;/div>
+	&lt;h4 class="question">故事情节&lt;/h4>
+	&lt;div class="answer">指作品所描写的事件发展，演变的全过程。故事情节的结构：（序幕）－开端－发展－高潮－结局－（尾声）用以展示人物性格，表现作品主题。&lt;/div>
+	&lt;h4 class="question">环境描写&lt;/h4>
+	&lt;div class="answer">指对人物活动的环境和事情发生的背景作描写。环境描写分为自然环境和社会环境。自然环境描写是指对人物活动的时间，地点，季节，气候及花草鸟虫的描写；社会环境描写是指对人物活动的具体背景，处所，氛围以及人际关系等作描写。&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+</article>
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

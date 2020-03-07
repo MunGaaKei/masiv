@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>布局</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+        .brush{
+            height: 2em;
+            border-radius: 2px;
+            text-align: center;
+            transition: all .24s;
+        }
+        .brush:hover{
+            filter: brightness(1.05);
+        }
+        .cols{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<article class="article">
+    <h1>布局</h1>
+
+    <section class="section">
+        <h2>基础</h2>
+        <p>基于<code>flex</code>构建灵活的布局，栅栏项被包裹在<code>.cols</code>容器里，鼠标移入色块可显示该色块所占宽度。</p>
+        <div class="widget" style="overflow: auto;">
+            <table class="table">
+                <thead>
+                    <th>屏幕宽度</th>
+                    <th>&gt; 780px</th>
+                    <th>&gt; 540px　&　≤ 780px</th>
+                    <th>≤ 540px</th>
+                </thead>
+                <tbody>
+                    <tr><th>.n</th><td colspan="2">补足剩余空间</td><td>100%</td></tr>
+                    <tr><th>.col-1</th><td>10%</td><td>10%</td><td>100%</td></tr>
+                    <tr><th>.col-2</th><td>20%</td><td>20%</td><td>100%</td></tr>
+                    <tr><th>.col-25</th><td>25%</td><td>25%</td><td>100%</td></tr>
+                    <tr><th>.col-3</th><td>30%</td><td>30%</td><td>100%</td></tr>
+                    <tr><th>.col-33</th><td>33.3333%</td><td>33.3333%</td><td>100%</td></tr>
+                    <tr><th>.col-4</th><td>40%</td><td>40%</td><td>100%</td></tr>
+                    <tr><th>.col-5</th><td>50%</td><td>50%</td><td>100%</td></tr>
+                    <tr><th>.col-x</th><td colspan="3">100%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="widget">
+            <div class="cols">
+                <div class="brush col-1 blue-o" masiv-tip="10%"></div>
+                <div class="brush col-2 gray-o" masiv-tip="20%"></div>
+                <div class="brush col-3 blue-o" masiv-tip="30%"></div>
+                <div class="brush col-4 gray-o" masiv-tip="40%"></div>
+            </div>
+            <div class="cols">
+                <div class="brush col-33 blue-o" masiv-tip="33.33%"></div>
+                <div class="brush col-33 gray-o" masiv-tip="33.33%"></div>
+                <div class="brush col-33 blue-o" masiv-tip="33.33%"></div>
+            </div>
+            <div class="cols">
+                <div class="brush col-25 gray-o" masiv-tip="25%"></div>
+                <div class="brush col-5 blue-o" masiv-tip="50%"></div>
+                <div class="brush col-25 gray-o" masiv-tip="25%"></div>
+            </div>
+            <div class="cols">
+                <div class="brush col-33 gray-o" masiv-tip="33.33%"></div>
+                <div class="brush n blue-o" masiv-tip="66.66%"></div>
+            </div>
+            <div class="cols">
+                <div class="brush blue-o" style="width: 200px;" masiv-tip="200px"></div>
+                <div class="brush n gray-o" masiv-tip="100% - 200px"></div>
+            </div>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="cols">
+    &lt;div class="col-1" masiv-tip="10%">&lt;/div>
+    &lt;div class="col-2" masiv-tip="20%">&lt;/div>
+    &lt;div class="col-3" masiv-tip="30%">&lt;/div>
+    &lt;div class="col-4" masiv-tip="40%">&lt;/div>
+&lt;/div>
+&lt;div class="cols">
+    &lt;div class="col-33" masiv-tip="33.33%">&lt;/div>
+    &lt;div class="col-33" masiv-tip="33.33%">&lt;/div>
+    &lt;div class="col-33" masiv-tip="33.33%">&lt;/div>
+&lt;/div>
+&lt;div class="cols">
+    &lt;div class="col-25" masiv-tip="25%">&lt;/div>
+    &lt;div class="col-5" masiv-tip="50%">&lt;/div>
+    &lt;div class="col-25" masiv-tip="25%">&lt;/div>
+&lt;/div>
+&lt;div class="cols">
+    &lt;div class="col-33" masiv-tip="33.33%">&lt;/div>
+    &lt;div class="n" masiv-tip="66.66%">&lt;/div>
+&lt;/div>
+&lt;div class="cols">
+    &lt;div style="width: 200px;" masiv-tip="200px">&lt;/div>
+    &lt;div class="n" masiv-tip="100% - 200px">&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+    </section>
+
+    <section class="section">
+        <h2>不同屏幕分辨率下的表现</h2>
+        <p>如果不需要在小屏幕都变成100%的宽度，也可以使用以下的类名进行补充修饰。<code class="blue-o">蓝色块</code>在不同的屏幕分辨率下回显示不同的宽度。</p>
+        <div class="widget" style="overflow: auto;">
+            <table class="table">
+                <thead>
+                    <th>屏幕宽度</th>
+                    <th>&gt; 780px</th>
+                    <th>&gt; 540px　&　≤ 780px</th>
+                    <th>≤ 540px</th>
+                </thead>
+                <tbody>
+                    <tr><th>宽度</th><td>30%</td><td>40%</td><td>50%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="widget">
+            <div class="cols">
+                <div id="scalable" class="brush blue-o col-3 col-md-4 col-sm-5"></div>
+            </div>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="cols">
+   &lt;div class="col-3 col-md-4 col-sm-5">&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+    </section>
+</article>
+
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+    M(document).on('ready', function(){
+        var ww = window.innerWidth;
+        var ew = ww > 720? 30: (ww > 540? 40: 50);
+        var el = document.getElementById('scalable');
+        el.setAttribute('masiv-tip', ew +'%');
+        M(el).tip();
+
+        window.addEventListener('resize', function(){
+            ww = window.innerWidth;
+            el.setAttribute('masiv-tip', (ww > 720? 30: (ww > 540? 40: 50)) +'%');
+        });
+    });
+</script>
+</body>
+</html>

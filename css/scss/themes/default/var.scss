@@ -1,0 +1,90 @@
+/* namespace as prefix */
+$m: '';
+
+/* font */
+@font-face {
+    font-family: 'romantic';
+    src: url('romantic.ttf');
+}
+$family: 'Consolas', 'romantic', 'Microsoft Yahei', 'Helvetica', sans-serif;
+$size: 14px;
+$line-height: 1.5;
+$style: normal;
+$weight: 400;
+
+
+/* colors */
+$body-background: transparent;
+
+$color-main: #ffd57b;
+$color-vice: #ffc64a;
+$color-main-reverse: if(lightness( $color-main ) >= 50, #2a2a2a, #fff);
+$color-active: #5c81fc;
+
+$color: #2a2a2a;
+$background: #fff;
+
+$link: #258de6;
+$link-hover: #1b96ff;
+
+$input: #ececec;
+$input-hover: #f1f1f1;
+$input-focus: #f3f3f3;
+
+$black: #2a2a2a;
+$black-vice: #000;
+
+$white: #fff;
+$white-vice: #f5f7fa;
+
+$blue: #258de6;
+$blue-vice: #1b96ff;
+
+$yellow: #ffd832;
+$yellow-vice: #fcea4d;
+
+$green: #2ab465;
+$green-vice: #37c574;
+
+$red: #dd0a35;
+$red-vice: #f71735;
+
+$gray: #e6e6e6;
+$gray-vice: #dcdcdc;
+
+$pink: #f45b69;
+$pink-vice: #ff2e63;
+
+
+/* common */
+$active: msv-active;
+$in: msv-in;
+
+$scrollbar-wh: 4px;
+$scrollbar-color: #808080;
+
+$w-main: 1200px;
+$w-article: 780px;
+$w-sidebar: 240px;
+
+$margin: 80px;
+$padding: 8px 12px;
+$gap: 8px;
+
+$border: 1px;
+
+$radius: 2px;
+$shadow: 0 4px 12px rgba($color, .13);
+
+$transition-duration: .24s;
+$transition-function: ease;
+$transition: all $transition-duration $transition-function;
+
+$breakpoint-md: 780px;
+$breakpoint-sm: 540px;
+
+
+/* animation */
+@keyframes btn-loading { 100%{ transform: rotate(360deg) translateZ(0); } }
+@keyframes loading { 50%{ transform: scale(1); } }
+@keyframes bar { 60%{ width: 100%; opacity: .2; } 100%{ width: 100%; opacity: 0; } }

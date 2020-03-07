@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>起步</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+        .downloads .col-5{
+            padding: 40px 0;
+            text-align: center;
+            font-weight: 700;
+        }
+        .downloads p{
+            margin-bottom: 12px;
+        }
+        .downloads .group{
+            justify-content: center;
+        }
+        .downloads .btn{
+            padding: .4em 1.2em;
+        }
+        .features .cols {
+            margin: 4px 0;
+        }
+        .features b {
+            min-width: 50px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<article class="article">
+	<h1>起步</h1>
+
+    <section id="download" class="section">
+        <h2>下载</h2>
+        <div class="cols downloads">
+            <div class="col-5">
+                <p>核心<code>masiv.css</code> \ <code>masiv.js</code>文件</p>
+                <div class="group">
+                    <a href="/css/masiv.css" class="btn pink-o" download="masiv.css">CSS</a>
+                    <a href="/js/masiv.js" class="btn blue-o" download="masiv.js">JS</a>
+                </div>
+            </div>
+            <div class="col-5">
+                <p>完整项目文件</p>
+                <a href="https://github.com/MunGaaKei/mavis/archive/master.zip" class="btn black-o round" download="masiv.zip">下载项目</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section features">
+        <h2>特点</h2>
+        <div class="cols">
+            <b>轻量：</b>
+            <p class="n">核心文件 <i class="iconfont icon-file"></i><code>masiv.css</code>压缩后仅<code>~24kb</code>。</p>
+        </div>
+        <div class="cols">
+            <b>简洁：</b>
+            <p class="n">框架注重于基础样式重置，剔除了不必要的样式语句。意味着基础样式的<b>设计极简</b>与拥有更强的<b>扩展性</b>。</p>
+        </div>
+        <div class="cols">
+            <b>语义化：</b>
+            <p class="n">推崇<b>HTML5</b>语义化标签，类名也通过语义化来命名。</p>
+        </div>
+        <div class="cols">
+            <b>响应式：</b>
+            <p class="n">在不同<b>屏幕分辨率</b>下会有不同的<a href="layout.html" class="link">布局</a>显示。</p>
+        </div>
+        <div class="cols">
+            <b>功能：</b>
+            <p class="n">提供丰富且极可能需要的<b>组件功能</b>。</p>
+        </div>
+        <div class="cols">
+            <b>主题：</b>
+            <p class="n">使用<code>sass</code>预处理器，样式目录文件结构清晰，可自定义与<a href="themes.html" class="link">添加主题</a>。在<code>var.scss</code>里可以设置<b>类名前缀</b>（即命名空间以解决类名冲突，<a href="themes.html" class="link">参考说明</a>）等等。</p>
+        </div>
+        <div class="cols">
+            <b>移动端：</b>
+            <p class="n">除了<b>CSS</b>，<b>JS</b>在移动端也做了事件处理，如<b>tap</b>、<b>swipe</b>、<b>press</b>。</p>
+        </div>
+    </section>
+
+	<section class="section">
+		<h2>文件引入</h2>
+        <p><a class="link" href="#download">下载文件</a>后，在页面里引入<code>masiv.css</code>文件，部分功能则需要引入<code>masiv.js</code>进行支持。</p>
+        <br>
+        <p>以下是一个简单的<code>MASIV</code>页面模板。</p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    &lt;title>MASIV&lt;/title>
+
+    &lt;link rel="stylesheet" href="css/masiv.css">
+&lt;/head>
+&lt;body>
+
+    &lt;!-- HTML -->
+
+    &lt;script src="js/masiv.js">&lt;/script>
+&lt;/body>
+&lt;/html>
+    </code>
+</pre>
+    </section>
+</article>
+
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

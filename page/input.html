@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>起步</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+    <h1>输入框</h1>
+    <p>引入<code class="blue-o">JS</code></p>
+<pre class="language-js">
+    <code class="language-js">
+&lt;script src="js/M.input.js">&lt;/script>
+    </code>
+</pre>
+    <p>另外，由于该插件默认使用<a href="iconfont.html" class="link">iconfont</a>字体图标，所以还需要引入相应的<code class="pink-o">CSS</code>。</p>
+
+    <section class="section">
+        <h2>富文本编辑器</h2>
+        <p>在输入框添加属性<code>[masiv-input]</code>，值为<code>editor</code>。</p>
+
+        <div class="widget">
+            <div masiv-input="editor"></div>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+<code class="language-html">
+&lt;div masiv-input="editor">&lt;/div>
+</code>
+</pre>
+    </section>
+
+	<section class="section">
+        <h2>文件上传</h2>
+        <p>在输入框添加属性<code>[masiv-input]</code>，值为<code>file</code>，其中<code>[data-title]</code>指定按钮文本。</p>
+        <div class="widget">
+            <div class="field col-5">
+                <label class="label-inline">
+                    <span class="label">附件：</span>
+                    <input type="file" class="input round" data-title="上传附件" masiv-input="file">
+                </label>
+            </div>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="field">
+    &lt;label class="label-inline">
+        &lt;span class="label">附件：&lt;/span>
+        &lt;input type="file" class="input round" data-title="上传附件" masiv-input="file">
+    &lt;/label>
+&lt;/div>
+    </code>
+</pre>
+    </section>
+
+    <section class="section">
+        <h2>日期控件</h2>
+        <p>在输入框添加属性<code>[masiv-input]</code>，值为<code>calendar</code>。</p>
+        <div class="widget">
+            <div class="field col-5">
+                <label class="label-inline">
+                    <span class="label">入学日期：</span>
+                    <input type="text" class="input round" masiv-input="calendar">
+                </label>
+            </div>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="field">
+    &lt;label class="label-inline">
+        &lt;span class="label">入学日期：&lt;/span>
+        &lt;input type="text" class="input round" masiv-input="calendar">
+    &lt;/label>
+&lt;/div>
+    </code>
+</pre>
+        </section>
+</article>
+
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/plugins/M.input.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

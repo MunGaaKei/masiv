@@ -1,0 +1,38 @@
+.main{
+    margin: auto;
+    max-height: 600px;
+    justify-content: space-between;
+}
+.logo{
+    margin: 0 0 20px;
+    max-height: 10vh;
+    min-height: 50px;
+}
+.text{
+    margin: auto 20px 0 0;
+}
+.version{
+    margin-left: 12px;
+}
+.bio{
+    margin: 16px 0 0 12px;
+}
+h1{
+    font-size: 63px;
+    letter-spacing: 10px;
+    text-indent: 12px;
+    line-height: 1.2;
+}
+h1 span{
+    color: #000;
+}
+.icons{
+    margin: auto 0 0;
+}
+.iconfont{
+    margin: 0 8px;
+    font-size: 1.5em;
+    transition: color .81s ease;
+}
+.icon-github:hover{ color: #5a28a7; }
+.icon-script:hover{ color: #1dbd1c; }

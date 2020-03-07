@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>加载</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>加载</h1>
+
+	<section class="section">
+		<h2>容器</h2>
+		<p><code>.loading</code>定义为一个绝对定位并且铺满相对父节点的容器，适用于父节点内容加载中显示的状态。</p>
+		<div class="widget">
+			<div class="card">
+				<header><b>收藏</b><a class="right red iconfont icon-heart"></a></header>
+				<div class="blocker">PHOTOGRAPH</div>
+				<div class="loading"></div>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="card">
+	&lt;header>&lt;b>收藏&lt;/b>&lt;a class="right red iconfont icon-heart">&lt;/a>&lt;/header>
+	&lt;div class="blocker">PHOTOGRAPH&lt;/div>
+
+	&lt;div class="loading">&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>进度条</h2>
+		<div id="progress" class="widget">
+			<div class="progress n"><div class="bar msv-active black-o" style="width: 60%;">60%</div></div>
+		</div>
+		<div class="widget">
+			<div class="progress">
+				<div class="bar blue-o" style="width: 40%;"></div>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="progress n">
+	&lt;div class="bar msv-active black-o" style="width: 60%;">60%&lt;/div>
+&lt;/div>
+
+&lt;div class="progress">
+	&lt;div class="bar blue-o" style="width: 40%;">&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+</article>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

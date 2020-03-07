@@ -1,0 +1,112 @@
+.msv-player{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	user-select: none;
+	background-color: #000;
+	&:fullscreen{
+		> .msv-player-controls{
+			position: absolute;
+			bottom: 0; left: 0; right: 0;
+			opacity: 0;
+			&:hover{
+				transition: none;
+				opacity: 1;
+			}
+		}
+	}
+}
+.msv-player-title{
+	position: absolute; z-index: 1;
+	left: 0; top: 0;
+	padding: 4px 12px;
+	margin: 8px;
+	box-sizing: border-box;
+	max-width: calc(100% - 24px);
+	background-color: rgba($background, .6);
+	font-weight: 700;
+	border-radius: $radius;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	transition: $transition;
+	opacity: 0;
+	&:hover{
+		transition: none;
+		opacity: 1;
+	}
+}
+.msv-player-controls{
+	position: relative;
+	padding-top: 4px;
+	display: flex;
+	align-items: center;
+	background-color: $background;
+	transition: $transition;
+	.progress{
+		border-radius: 0;
+		cursor: pointer;
+	}
+	.bar{
+		min-height: unset;
+		padding: 0;
+		transition: all .15s linear;
+	}
+}
+.msv-player-progress{
+	position: absolute;
+	left: 0; right: 0; top: 0;
+	height: 4px;
+}
+.msv-player-act{
+	padding: 4px 8px;
+	&:hover{ background-color: rgba($color, .05); }
+}
+.msv-player-time{
+	padding: 0 8px;
+	margin-right: auto;
+}
+.msv-player-widget{
+	position: relative;
+	display: flex;
+	&:hover .msv-player-popup{
+		padding: 8px;
+		height: unset;
+	}
+}
+.msv-player-popup{
+	display: flex;
+	justify-content: center;
+	box-sizing: border-box;
+	position: absolute; z-index: 2;
+	bottom: 100%; right: 0;
+	min-width: 100%;
+	padding: 0 8px;
+	height: 0;
+	overflow: hidden;
+	background-color: $background;
+	border-radius:2px 2px 0 0;
+	transition: $transition;
+}
+.msv-player-volume{
+	height: 80px; width: 4px;
+	transform: rotate(180deg);
+	.bar{ width: 100%; }
+}
+.msv-player-tip{
+	position: absolute; z-index: 1;
+	right: 8px; top: 8px;
+	padding: 4px 12px;
+	display: flex;
+	align-items: center;
+	border-radius: $radius;
+	background-color: rgba($background, .86);
+	pointer-events: none;
+	transition: $transition;
+	opacity: 0;
+	&.msv-player-tip-on{
+		opacity: 1;
+		transition: none;
+	}
+}

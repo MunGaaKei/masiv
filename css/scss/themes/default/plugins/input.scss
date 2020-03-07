@@ -1,0 +1,166 @@
+.#{$m}input{
+	&[masiv-input="file"]{
+		position: relative;
+		cursor: pointer;
+		background-color: transparent;
+		@supports (-moz-transform: scale(1)){ background-color: $input; }
+		&:before,
+		&:after{
+			position: absolute;
+			top: 0; bottom: 0; right: 0;
+			padding: $padding;
+			border-radius: inherit;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		&:before{
+			content: attr(data-file);
+			left: 0;
+			background-color: $input;
+			transition: $transition;
+		}
+		&:after{
+			content: attr(data-title);
+			margin: 4px;
+			display: flex;
+			align-items: center;
+			background-color: $color; color: $background;
+			font-size: .94em;
+		}
+		&:hover:before{ background-color: $input-hover; }
+	}
+}
+.msv-calendar{
+    display: none;
+	position: absolute; z-index: 10;
+	padding: 2px 0;
+	width: 224px;
+	line-height: 28px;
+	box-shadow: $shadow;
+	background-color: $background;
+	border-radius: $radius;
+	text-align: center;
+	user-select: none;
+	overflow: hidden;
+	opacity: 0;
+	transform: translateX(5px);
+	&.#{$active}{ display: block; transition: opacity $transition-duration, transform $transition-duration; }
+	&.#{$in}{ transform: translateX(0); opacity: 1; }
+	li{
+		margin: 2px;
+		box-sizing: border-box;
+		width: 28px;
+		border-radius: $radius;
+		&.msv-active{ background-color: $color; color: $background; }
+		&.msv-diffmon{ font-style: italic; color: rgba($color, .5); }
+	}
+}
+.msv-calendar-selector{
+	display: flex;
+	justify-content: center;
+	font-weight: 600;
+	a{
+		flex: 1 1 auto;
+		margin: 2px;
+		border-radius: $radius;
+		&:hover{ background-color: $color; color: $background; }
+	}
+}
+.msv-calendar-days,
+.msv-calendar-years,
+.msv-calendar-months{
+	display: flex;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	[data-date],
+	[data-year],
+	[data-month],
+	[data-pn]{
+		cursor: pointer;
+		&:hover{
+			background-color: $color; color: $background;
+		}
+	}
+}
+.msv-calendar-months,
+.msv-calendar-years{
+	position: absolute; z-index: 1;
+	left: 0; top: 0; bottom: 0; right: 0;
+	padding: inherit;
+	background-color: inherit;
+	align-content: center;
+	justify-content: center;
+	transition: $transition;
+	transform: translate(-100%, 0);
+	&.msv-calendar-on{ transform: translate(0, 0); }
+}
+.msv-calendar-years li{ margin: 2px 12px; width: 72px; }
+.msv-calendar-months li { width: 70px; }
+
+
+.msv-editor-container{
+	display: flex;
+	flex-direction: column;
+	min-height: 240px;
+	border-radius: $radius;
+	&:focus-within{
+		box-shadow: $shadow;
+	}
+	&.msv-full{
+		position: fixed; z-index: 100;
+		left: 0; right: 0; bottom: 0; top: 0;
+		transform: translateZ(0);
+		> .msv-editor-toolbar{ position: static; }
+	}
+}
+.msv-editor-toolbar{
+	position: sticky;
+	top: 0;
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: inherit;
+	background-color: $background;
+	user-select: none;
+	.#{$m}group{
+		padding: 0 8px;
+		min-width: 152px;
+	}
+	.icon-hashtag{
+		margin-right: 4px;
+		text-shadow: 0 0 4px #808080;
+	}
+}
+.msv-editor-item{
+	padding: .36em .6em;
+	border-radius: inherit;
+	&:hover{
+		background-color: rgba($color, .15);
+	}
+}
+.msv-editor-colors{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 6px 6px 0;
+	> a {
+		box-sizing: border-box;
+		height: 20px;
+		width: 20%;
+		border: 4px solid $background;
+		border-radius: $radius;
+		&:hover{
+			border-color: rgba($background, .5);
+		}
+	}
+}
+.msv-editor{
+	flex: 1 1 auto;
+	overflow: auto;
+	ul li{ list-style: disc inside; }
+	ol li{ list-style: decimal inside; }
+	a{
+		color: $link;
+		border-bottom: 1px dashed $link;
+		&:empty{ display: none; }
+	}
+}

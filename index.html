@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>MΛSIV</title>
+    <link rel="shortcut icon" href="ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="css/masiv.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <canvas id="patch" class="room"></canvas>
+
+	<div class="room rows">
+        <main class="main n cols">
+            <div class="text">
+                <h1>MΛS<span>I</span>V</h1>
+                <!-- <img src="/resource/logo.png" alt="" class="logo"> -->
+                <code class="version">1.0</code>
+            </div>
+            <div class="cols icons">
+                <a href="https://github.com/MunGaaKei/masiv" class="iconfont icon-github" masiv-tip="项目地址"></a>
+                <a href="page/docs.html" class="iconfont icon-script" masiv-tip="使用文档"></a>
+            </div>
+        </main>
+    </div>
+
+<script src="js/masiv.js"></script>
+<script>
+M(function(){
+    var cvs = document.getElementById('patch');
+    var ctx = cvs.getContext('2d');
+    var ww = cvs.width = window.innerWidth;
+    var wh = cvs.height = window.innerHeight;
+
+    drawRect();
+
+    function drawRect(){
+        var rg = ctx.createRadialGradient(100, 100, 50, 100, 100, 100);
+        rg.addColorStop(0, '#ffff0011');
+        rg.addColorStop(.5, '#0f0');
+        rg.addColorStop(1, '#0ff');
+
+
+        ctx.fillStyle = rg;
+        ctx.lineWidth = 0;
+        ctx.stroke();
+        ctx.fill();
+    }
+
+    window.addEventListener('resize', function(){
+        ww = cvs.width = window.innerWidth;
+        wh = cvs.height = window.innerHeight;
+    });
+
+});
+</script>
+</body>
+</html>

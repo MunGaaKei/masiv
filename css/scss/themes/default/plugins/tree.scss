@@ -1,0 +1,37 @@
+.#{$m}tree{
+    .#{$m}li{
+        display: flex;
+        align-items: center;
+        border-radius: $radius;
+    }
+    [node-name]{
+        flex: 1 1 auto;
+        margin: 0 .4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &:first-child{
+            margin-left: 0;
+        }
+    }
+    [node-checked]{
+        margin-right: 0.4em;
+        color: #84a584;
+        + span {
+            margin-left: 0;
+        }
+    }
+    ul{
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        padding-left: 0;
+        transition: $transition;
+    }
+    .#{$m}opened{
+        + ul {
+            height: unset;
+            padding-left: 1em;
+        }
+    }
+}

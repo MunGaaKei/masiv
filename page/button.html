@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>按钮</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+    .dib .btn{
+        margin: 0 8px 8px 0;
+    }
+    </style>
+</head>
+<body>
+
+<article class="article">
+
+	<h1 class="title">按钮</h1>
+	<section class="section">
+		<h2>使用</h2>
+		<p><button class="btn">基础的按钮样式</button></p>
+<pre class="language-html">
+    <code class="language-html">
+&lt;button class="btn">基础的按钮样式&lt;/button>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+        <h2>表现</h2>
+        <p>按钮加上相应的颜色类，如<code>.black</code>：</p>
+        <p>可选择的颜色有：<span class="black">黑色</span>、<span class="white">白色</span>、<span class="blue">蓝色</span>、<span class="red">红色</span>、<span class="yellow">黄色</span>、<span class="pink">粉色</span>、<span class="green">绿色</span>、<span class="gray">灰色</span>。</p>
+        <div class="widget dib cols">
+            <a class="btn black">黑色</a>
+            <a class="btn blue">蓝色</a>
+            <a class="btn green plain">绿色</a>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a class="btn black">黑色&lt;/a>
+&lt;a class="btn blue">蓝色&lt;/a>
+&lt;a class="btn green plain">绿色&lt;/a>
+    </code>
+</pre>
+
+		<p>填充的则加上<code>.black-o</code>类：</p>
+        <div class="widget cols dib">
+            <a class="btn black-o">黑色</a>
+            <a class="btn blue-o">蓝色</a>
+            <a class="btn yellow-o">黄色</a>
+            <a class="btn red-o">红色</a>
+            <a class="btn green-o">绿色</a>
+            <a class="btn pink-o">粉色</a>
+            <a class="btn white-o">白色</a>
+            <a class="btn gray-o">灰色</a>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a class="btn black-o">黑色&lt;/a>
+    </code>
+</pre>
+
+        <p>加载状态下的按钮</p>
+        <div class="widget dib cols">
+            <a class="btn is-loading">加载中</a>
+            <a id="btn-loading" class="btn white-o">每三秒钟点击我一次</a>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;a class="btn is-loading">加载中&lt;/a>
+&lt;a class="btn white-o">每三秒钟点击我一次&lt;/a>
+    </code>
+</pre>
+
+        <p>禁用状态下的按钮</p>
+        <div class="widget">
+            <button class="btn" disabled>你不可以点击我</button>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;button class="btn" disabled>你不可以点击我&lt;/button>
+    </code>
+</pre>
+    </section>
+
+    <section class="section">
+        <h2>组合</h2>
+        <p>多个按钮可以放入<code>.group</code>容器里。</p>
+        <div class="widget">
+        	<div class="group round">
+        		<a class="btn blue-o">蓝色</a>
+        		<a class="btn black-o">黑色</a>
+        		<a class="btn yellow-o">黄色</a>
+        		<a class="btn red-o">红色</a>
+        	</div>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="group round">
+    &lt;a class="btn blue-o">蓝色&lt;/a>
+    &lt;a class="btn black-o">黑色&lt;/a>
+    &lt;a class="btn yellow-o">黄色&lt;/a>
+    &lt;a class="btn red-o">红色&lt;/a>
+&lt;/div>
+    </code>
+</pre>
+
+        <p><code>.collapsed</code>类可以使按钮边框合并，建议作用在子元素为边框类型的组。带有<code>.iconfont</code>的按钮建议在文本内容加上标签。</p>
+        <div class="widget">
+        	<div class="group collapsed">
+        		<a class="btn black"><span>HOME</span><i class="iconfont icon-home"></i></a>
+        		<a class="btn black"><span>FRIENDS</span><i class="iconfont icon-friends"></i></a>
+                <a class="btn black"><span>SETTING</span><i class="iconfont icon-setting"></i></a>
+                <div masiv-dropmenu>
+                    <a class="btn black-o"><i class="iconfont icon-more-v"></i></a>
+                    <ul class="dropmenu black-o">
+                        <li class="li">PROFILE</li>
+                        <li class="li">HELP</li>
+                        <li class="li">EXIT</li>
+                    </ul>
+                </div>
+        	</div>
+        </div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div class="group collapsed">
+    &lt;a class="btn black">
+        &lt;span>HOME&lt;/span>
+        &lt;i class="iconfont icon-home">&lt;/i>
+    &lt;/a>
+    &lt;a class="btn black">
+        &lt;span>FRIENDS&lt;/span>
+        &lt;i class="iconfont icon-friends">&lt;/i>
+    &lt;/a>
+    &lt;a class="btn black">
+        &lt;span>SETTING&lt;/span>
+        &lt;i class="iconfont icon-setting">&lt;/i>
+    &lt;/a>
+    &lt;div masiv-dropmenu>
+        &lt;a class="btn black-o">&lt;i class="iconfont icon-more-v">&lt;/i>&lt;/a>
+        &lt;ul class="dropmenu black-o">
+            &lt;li class="li">PROFILE&lt;/li>
+            &lt;li class="li">HELP&lt;/li>
+            &lt;li class="li">EXIT&lt;/li>
+        &lt;/ul>
+    &lt;/div>
+&lt;/div>
+    </code>
+</pre>
+
+        <p></p>
+    </section>
+
+</article>
+
+<script src="../js/prism.js"></script>
+<script src="../js/masiv.js"></script>
+<script>
+	(function(){
+		M('#btn-loading').on('click', function(){
+			var self = this;
+			self.classList.add('is-loading');
+			setTimeout(function(){
+				self.classList.remove('is-loading');
+				self = null;
+			}, 3000);
+		});
+	})();
+</script>
+</body>
+</html>

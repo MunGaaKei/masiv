@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title>下拉菜单</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/prism.css">
+	<link rel="stylesheet" href="../css/iconfont/iconfont.css">
+	<style>
+	[masiv-submenu].active > .li > .icon-up{
+		transform: rotateX(180deg);
+	}
+	</style>
+</head>
+<body>
+
+<article class="article">
+	<h1>下拉菜单</h1>
+
+	<section class="section">
+		<h2>使用</h2>
+		<p>触发器使用<code>[masiv-dropmenu]</code>属性标识。</p>
+		<div class="widget">
+			<div masiv-dropmenu>
+				<a class="btn">你不喜欢的那些东西<span class="caret"></span></a>
+				<ul class="dropmenu">
+					<li>
+						<label class="label-inline group" style="width: 220px;">
+							<input type="text" class="input" autocomplete="off">
+							<a class="btn blue-o">寻找</a>
+						</label>
+					</li>
+					<li class="li">运动</li>
+					<li class="li">植物</li>
+					<li class="li">动物</li>
+				</ul>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div masiv-dropmenu>
+	&lt;a class="btn">你不喜欢的那些东西&lt;span class="caret">&lt;/span>&lt;/a>
+	&lt;ul class="dropmenu">
+		&lt;li>
+			&lt;label class="label-inline group" style="width: 220px;">
+				&lt;input type="text" class="input" autocomplete="off">
+				&lt;a class="btn blue-o">寻找&lt;/a>
+			&lt;/label>
+		&lt;/li>
+		&lt;li class="li">运动&lt;/li>
+		&lt;li class="li">植物&lt;/li>
+		&lt;li class="li">动物&lt;/li>
+	&lt;/ul>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+
+	<section class="section">
+		<h2>鼠标悬停触发</h2>
+		<p>使用<code>[masiv-dropdown]</code>属性替代<code>[masiv-dropmenu]</code>属性即可，并且可以通过类<code>.leftward</code>、<code>.rightward</code>、<code>.upward</code>来控制弹出方向。</p>
+		<div class="widget">
+			<div masiv-dropdown>
+				<a class="btn blue-o">电影</a>
+				<ul class="dropmenu upward">
+					<li class="li">爱情片</li>
+					<li>
+						<div class="col-x" masiv-dropdown>
+							<a class="li navs">恐怖片<i class="caret"></i></a>
+							<ul class="dropmenu black-o rightward">
+								<li class="li">午夜凶铃</li>
+								<li class="li">咒怨</li>
+								<li class="li">安娜贝尔</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div masiv-dropdown>
+	&lt;a class="btn blue-o">电影&lt;/a>
+	&lt;ul class="dropmenu upward">
+		&lt;li class="li">爱情片&lt;/li>
+		&lt;li>
+			&lt;div class="col-x" masiv-dropdown>
+				&lt;a class="li navs">恐怖片&lt;i class="caret">&lt;/i>&lt;/a>
+				&lt;ul class="dropmenu black-o rightward">
+					&lt;li class="li">午夜凶铃&lt;/li>
+					&lt;li class="li">咒怨&lt;/li>
+					&lt;li class="li">安娜贝尔&lt;/li>
+				&lt;/ul>
+			&lt;/div>
+		&lt;/li>
+	&lt;/ul>
+&lt;/div>
+    </code>
+</pre>
+	</section>
+</article>
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>MASIV · M</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+        html, body{ scroll-padding: 50px; }
+        .table{ margin-top: 1em; }
+        .table td{ vertical-align: baseline; }
+        .table td:nth-child(2){ white-space: nowrap; }
+        .m-header{ margin: 0 -12px; padding: 0 12px; align-items: center; }
+        .m-header > h1 { margin: 0 auto 0 0; }
+        .m-header > [masiv-dropdown]{ margin-left: 4px; }
+    </style>
+</head>
+<body>
+
+<article class="article">
+	<div class="sticky cols m-header">
+        <h1>M</h1>
+        <div masiv-dropdown>
+            <a class="btn yellow-o">M(el).method()<span class="caret"></span></a>
+            <div class="dropmenu">
+                <a class="li" href="#fn-selector">M()</a>
+                <a class="li" href="#fn-each">each()</a>
+                <a class="li" href="#fn-on">on()</a>
+                <a class="li" href="#fn-off">off()</a>
+                <a class="li" href="#fn-fire">fire()</a>
+                <a class="li" href="#fn-tip">组件初始化</a>
+            </div>
+        </div>
+        <div masiv-dropdown>
+            <a class="btn black-o">M.method()<span class="caret" style="border-top-color: #fff;"></span></a>
+            <div class="dropmenu">
+                <a class="li" href="#fn-extend">extend()</a>
+                <a class="li" href="#fn-ajax">ajax()</a>
+                <a class="li" href="#fn-debounce">debounce()</a>
+                <a class="li" href="#fn-throttle">throttle()</a>
+                <a class="li" href="#fn-pos">pos()</a>
+                <a class="li" href="#fn-time">time()</a>
+                <a class="li" href="#fn-guid">guid()</a>
+            </div>
+        </div>
+    </div>
+
+	<section class="section">
+        <h2>介绍</h2>
+        <p>为了实现一些组件的功能，<b>Javascript</b>是不可或缺的。在引入<code class="yellow-o">masiv.js</code>后，<b>M</b> 作为一个全局对象挂载了一些功能方法：</p>
+    </section>
+    
+    <section class="section">
+        <h2>M 元素选取</h2>
+        <div class="fn" id="fn-selector">
+            <h4 class="fn-name blue">M( selector[, context] )</h4>
+            <p>返回一个 <b>M</b> 对象实例，实质上通常为一个伪数组：</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>selector</td><td>string, function, HTMLElements, array</td><td></td></tr>
+                    <tr><td>context</td><td>HTMLElement</td><td>文档上下文，默认为 document</td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+    <code class="language-js">
+M('.amsiv');        // 选取 class="amsiv" 的元素
+M('h4', node);      // 选取 node 节点里的所有 &lt;h4> 元素
+M(function(){});    // 文档加载完成后执行函数
+    </code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-each">
+            <h4 class="fn-name blue">.each( fn )</h4>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>fn</td><td>function</td><td>遍历对象或数组执行回调函数 <b class="blue">fn</b>，该回调函数接受两个参数 <b class="blue">el</b> 和 <b class="blue">index</b></td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+    <code class="language-js">
+M('h3').each(function(el, i){
+    console.log(el, i);
+});
+    </code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-on">
+            <h4 class="fn-name blue">.on( type[, selector], fn[, options] )</h4>
+            <p>添加绑定事件</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>type</td><td>string</td><td>事件类型</td></tr>
+                    <tr><td>selector</td><td>string</td><td>元素选取字符串</td></tr>
+                    <tr><td>fn</td><td>function</td><td>事件函数</td></tr>
+                    <tr><td>options</td><td>object, boolean</td><td>当为 boolean 型时表示是否为捕获类型，用法与 addEventListener 方法第三个参数一致</td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+    <code class="language-js">
+M('h4').on('click', function(){ });                 // 给所有 &lt;h4> 绑定点击事件
+M(document).on('click', 'h4', function(){ });       // 事件委托写法
+M('a').on('click', function(){}, { once: true });   // 给 &lt;a> 绑定一次性点击事件
+M(document).on('ready', function(){ });             // 文档加载完成后执行函数，等同于 M(function(){  });
+    </code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-off">
+            <h4 class="fn-name blue">.off( type, handle )</h4>
+            <p>移除绑定事件</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>type</td><td>string</td><td>事件类型</td></tr>
+                    <tr><td>handle</td><td>function</td><td>函数句柄</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fn" id="fn-fire">
+            <h4 class="fn-name blue">.fire( type )</h4>
+            <p>触发事件类型</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>type</td><td>string</td><td>时间类型</td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+    <code class="language-js">
+M('h4').fire('click');  // 触发 &lt;h4> 节点的点击事件
+    </code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-tip">
+            <h4 class="fn-name blue">.tip( options )</h4>
+            <p>手动初始化<a href="tip.html" class="link"><b>提示</b></a>组件功能</p>
+        </div>
+
+        <div class="fn" id="fn-dialog">
+            <h4 class="fn-name blue">.dialog( [show] )</h4>
+            <p>打开/关闭 <a href="dialog.html" class="link"><b>对话框</b></a></p>
+        </div>
+
+        <div class="fn" id="fn-collapse">
+            <h4 class="fn-name blue">.collapse()</h4>
+            <p>手动初始化<a href="collapse.html" class="link"><b>折叠面板</b></a>组件功能</p>
+        </div>
+
+        <div class="fn" id="fn-tabs">
+            <h4 class="fn-name blue">.tabs()</h4>
+            <p>手动初始化<a href="tab.html" class="link"><b>标签页</b></a>组件功能</p>
+        </div>
+
+        <div class="fn" id="fn-page">
+            <h4 class="fn-name blue">.page( current, total[, options] )</h4>
+            <p>生成<a href="pagination.html" class="link"><b>分页</b></a>组件</p>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <h2>M 对象</h2>
+
+        <div class="fn" id="fn-extend">
+            <h4 class="fn-name blue">.extend( object, object[, object[, object ...]][, boolean] )</h4>
+            <p>对象扩展功能，至少一个参数，除了最后一个参数外，均要求为对象类型，函数最后会返回第一个参数。当最后一个参数为<code>false</code>时，第二个及第二个之后的参数将<b>不会</b>覆盖属性，示例：</p>
+<pre class="language-js">
+<code class="language-js">
+M.extend(
+    { a: 1, b: 2 },
+    { a: 9, c: 3 }
+);
+//  { a: 9, b: 2, c: 3 }
+
+M.extend(
+    { a: 1, b: 2 },
+    { a: 9, c: 3 },
+    false
+);
+//  { a: 1, b: 2, c: 3 }
+</code>
+</pre>
+        </div>
+        
+        <div class="fn" id="fn-ajax">
+            <h4 class="fn-name blue">.ajax( options )</h4>
+            <p>AJAX 功能，接收一个对象 <b class="blue">options</b> 参数设置，<b class="blue">options</b>里可进行设置的参数：</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>url</td><td>string</td><td>请求路径，<code class="red"><b>必填</b></code></td></tr>
+                    <tr><td>method</td><td>string</td><td>请求类型，默认为<code>GET</code></td></tr>
+                    <tr><td>data</td><td>object</td><td>附加数据</td></tr>
+                    <tr><td>asyn</td><td>boolean</td><td>是否为异步，默认为<code>true</code></td></tr>
+                    <tr><td>success</td><td>function</td><td>请求成功后的回调函数</td></tr>
+                    <tr><td>error</td><td>function</td><td>请求失败后的回调函数</td></tr>
+                    <tr><td>complete</td><td>function</td><td>请求完成后的回调函数</td></tr>
+                    <tr><td>headers</td><td>object</td><td>请求头部设置</td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+<code class="language-js">
+M.ajax({
+    url: '/search',
+    success: function( res ){ }
+});
+</code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-debounce">
+            <h4 class="fn-name blue">.debounce( fn[, ms, immediate] )</h4>
+            <p>使一个函数只在事件频繁触发结束一段时间间隔后执行一次，返回一个新的函数</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>fn</td><td>function</td><td>需要进行处理的函数</td></tr>
+                    <tr><td>ms</td><td>number</td><td>等待时延，单位<code>ms</code>，默认值为 <b>250</b></td></tr>
+                    <tr><td>immediate</td><td>boolean</td><td>是否在事件触发开始时执行一次，默认为 <b>false</b></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fn" id="fn-throttle">
+            <h4 class="fn-name blue">.throttle( fn[, ms, cancelLast] )</h4>
+            <p>使一个函数只在事件频繁触发的时间间隔内至少执行一次，返回一个新的函数</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>fn</td><td>function</td><td>需要进行处理的函数</td></tr>
+                    <tr><td>ms</td><td>number</td><td>时间间隔，单位<code>ms</code>，默认值为 <b>250</b></td></tr>
+                    <tr><td>cancelLast</td><td>boolean</td><td>是否执行最后一个时间间隔的最后一次，默认为 <b>false</b></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="fn" id="fn-pos">
+            <h4 class="fn-name blue">.pos( node )</h4>
+            <p>返回该节点相对于页面文档的坐标位置</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>node</td><td>string, HTMLElement</td><td>节点元素</td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+<code class="language-js">
+M.pos( 'h1' );
+// { top: 8, left: 78 }
+</code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-time">
+            <h4 class="fn-name blue">.time( datetime[, pattern, zero] )</h4>
+            <p>返回格式化时间字符串</p>
+            <table class="table">
+                <thead><td>参数</td><td>类型</td><td>说明</td></thead>
+                <tbody>
+                    <tr><td>datetime</td><td>Date()</td><td>时间对象</td></tr>
+                    <tr><td>pattern</td><td>string</td><td>返回的时间格式</td></tr>
+                    <tr><td>zero</td><td>boolean</td><td>是否补零，默认为<code>true</code></td></tr>
+                </tbody>
+            </table>
+<pre class="language-js">
+<code class="language-js">
+M.time(new Date('2018-08-08'), 'Y/M/D h:m:s');      // "2018/08/08 08:00:00"
+M.time(new Date('2018-08-08'), 'h-m-s', false);     // "8-0-0"
+</code>
+</pre>
+        </div>
+
+        <div class="fn" id="fn-guid">
+            <h4 class="fn-name blue">.guid()</h4>
+            <p>返回 <b>GUID</b> 字符串</p>
+        </div>
+
+    </section>
+
+</article>
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+</body>
+</html>
