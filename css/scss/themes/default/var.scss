@@ -2,12 +2,8 @@
 $m: '';
 
 /* font */
-@font-face {
-    font-family: 'romantic';
-    src: url('romantic.ttf');
-}
-$family: 'Consolas', 'romantic', 'Microsoft Yahei', 'Helvetica', sans-serif;
-$size: 14px;
+$family: -apple-system, BlinkMacSystemFont, Oxygen, Ubuntu, Cantarell, Consolas, 'Open Sans', 'Helvetica Neue', sans-serif;
+$size: 16px;
 $line-height: 1.5;
 $style: normal;
 $weight: 400;
