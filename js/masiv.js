@@ -456,8 +456,8 @@
 				if(tar.classList.contains(ACTIVE_CLASS)) return false;
 				var group = self.getAttribute('masiv-tabs');
 				var pNav = self.querySelector('[masiv-tab].'+ ACTIVE_CLASS);
-				var pTab = doc.querySelector('[masiv-taber='+ group +'].'+ ACTIVE_CLASS);
-				var tab = doc.querySelector('[masiv-taber='+ group +'][masiv-tab='+ tar.getAttribute('masiv-tab') +']');
+				var pTab = doc.querySelector('[masiv-taber="'+ group +'"].'+ ACTIVE_CLASS);
+				var tab = doc.querySelector('[masiv-taber="'+ group +'"][masiv-tab="'+ tar.getAttribute('masiv-tab') +'"]');
 
 				pNav && pNav.classList.remove(ACTIVE_CLASS);
 				pTab && pTab.classList.remove(ACTIVE_CLASS);
