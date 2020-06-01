@@ -41,33 +41,23 @@
         }
         .sidebar{
             z-index: 100;
-        }
-        .sidebar::-webkit-scrollbar-thumb{
-            background-color: #666;
+            background: #ececec;
         }
         .drawer{
             padding: 36px 0;
         }
-        .sidebar:hover{
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .13);
-        }
         .tree .opened + ul {
-            color: #888;
-            padding: 4px 0;
+            padding: 4px 0 4px 12px;
         }
         .tree .li[node-folder]{
             font-weight: 600;
         }
-        .tree .li:hover{
-            color: #212121;
+        .tree ul {
+            padding: 0 0 0 12px;
+            font-size: .9em;
         }
         .tree .icon-more-v {
             font-size: .8em;
-        }
-        @media (min-width: 768px) {
-            .tree .li:hover{
-                color: #fff;
-            }
         }
 	</style>
 </head>
@@ -75,7 +65,7 @@
 
     <div class="room cols">
 
-        <aside id="masiv-menu" class="sidebar black-o">
+        <aside id="masiv-menu" class="sidebar">
             <ul class="drawer"></ul>
         </aside>
 

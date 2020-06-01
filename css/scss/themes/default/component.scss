@@ -367,6 +367,7 @@
 .#{$m}checkbox{
 	position: relative;
 	margin-right: .5em;
+	padding: 0 !important;
 	height: 1.2em; width: 1.2em;
 	flex-shrink: 0;
 	background-color: rgba($color, .15);
