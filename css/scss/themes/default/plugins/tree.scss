@@ -1,4 +1,5 @@
 .#{$m}tree{
+    user-select: none;
     .#{$m}li{
         display: flex;
         align-items: center;
@@ -16,7 +17,7 @@
     }
     [node-checked]{
         margin-right: 0.4em;
-        color: #84a584;
+        color: #52ab52;
         + span {
             margin-left: 0;
         }

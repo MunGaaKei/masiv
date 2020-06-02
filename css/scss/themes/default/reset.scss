@@ -16,7 +16,8 @@ blockquote{ padding: nth($padding, 2); border-radius: $radius; border-left: 2px 
 ::-webkit-scrollbar{ width: $scrollbar-wh; height: $scrollbar-wh; }
 ::-webkit-scrollbar-button,::-webkit-scrollbar-corner{ display: none; }
 ::-webkit-scrollbar-track{ background-color: inherit; }
-::-webkit-scrollbar-thumb{ background-color: $scrollbar-color; border: 1px solid transparent; border-radius: $scrollbar-wh; }
+::-webkit-scrollbar-thumb{ background-color: $scrollbar-color; border: 1px solid transparent; cursor: pointer; }
+::-webkit-scrollbar-thumb:hover{ background: $scrollbar-color-hover; }
 
 .iconfont{ font-size: 1em; font-weight: 400 !important; }
 

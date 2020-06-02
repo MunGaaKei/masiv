@@ -58,11 +58,10 @@
 .#{$m}btn{
 	background-color: $color-main;
 	color: $color-main-reverse;
-	padding: .36em .8em;
+	padding: 4px 12px;
     border: $border solid transparent;
     &.#{$m}plain{ border-color: transparent !important; background-color: transparent; }
     &:hover{
-		box-shadow: $shadow;
 		background-color: $color-vice;
         border-color: transparent;
 		z-index: 1;
@@ -70,7 +69,7 @@
 	&:active{ background-color: $color-main; }
 	&:empty{ display: none; }
 	.iconfont{
-		margin: 0 .36em;
+		margin: 0 4px;
 		&:first-child{ margin-left: 0; }
 		&:last-child{ margin-right: 0; }
 	}
@@ -85,8 +84,8 @@
 			position: absolute;
 			box-sizing: border-box;
 			left: 50%; top: 50%;
-			margin: -.6em 0 0 -.6em;
-			width: 1.2em; height: 1.2em;
+			margin: -10px 0 0 -10px;
+			width: 20px; height: 20px;
 			border: 2px solid $color-main-reverse;
 			border-top-color: transparent !important;
 			border-radius: 50%;
@@ -101,12 +100,12 @@
 	}
 }
 
-.#{$m}pages{ margin: -.2em; }
+.#{$m}pages{ margin: -4px; }
 .#{$m}page-dots{ cursor: default; }
 .#{$m}page,
 .#{$m}page-dots{
-	padding: .36em .8em;
-	margin: .2em;
+	padding: 4px 12px;
+	margin: 4px;
 }
 .#{$m}page{
 	&:hover{ background-color: $color-vice; }
@@ -131,15 +130,15 @@
 	position: relative;
 	display: inline-flex;
 	margin: 4px;
-	padding: .3em .6em .3em 1.4em;
-	border-radius: 1.2em/2em $radius $radius 2em;
+	padding: 4px 12px 4px 24px;
+	border-radius: 32px/36px $radius $radius 36px;
 	background-color: $color; color: $background;
 	transition: $transition;
 	&:before{
 		content: '\20';
 		position: absolute;
-		top: 50%; left: .6em;
-		width: .3em; height: .3em;
+		top: 50%; left: 10px;
+		width: 6px; height: 6px;
 		border-radius: 50%;
 		background-color: $background;
         box-shadow: 0 -1px 1px 0 rgba($background,.3);
@@ -157,7 +156,7 @@
 	ul,
 	ol{
 		position: relative;
-		padding-left: 1.2rem;
+		padding-left: 1.5em;
 	}
 }
 .#{$m}li{
@@ -165,7 +164,7 @@
 	align-items: center;
 	box-sizing: border-box;
 	width: 100%;
-	padding: .4rem 1rem;
+	padding: 6px 16px;
 	transition: $transition;
 	&:hover{
 		background: rgba($color-active, .1);
@@ -177,7 +176,7 @@
 	padding: .1em .5em .08em;
 	border-radius: $radius;
 	box-shadow: $shadow;
-	font-size: .9em;
+	font-size: .8em;
 	background-color: $background; color: $color;
 	&:empty{ display: none; }
 }
@@ -349,7 +348,7 @@
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
-	padding: .36em 1em;
+	padding: 4px 12px;
 	border: 1px solid transparent;
 }
 .#{$m}textarea{
@@ -410,7 +409,7 @@
 	}
 	> .#{$m}caret{
 		position: absolute;
-		right: .75em; top: 1em;
+		right: .75em; top: .8em;
 		pointer-events: none;
 	}
 }
@@ -429,9 +428,9 @@
 		&:before,
 		&:after{
             content: '\20';
-            margin: auto -.2em;
-			height: 1.2em; width: 1.2em;
-			border-radius: 1.2em;
+            margin: auto -4px;
+			height: 24px; width: 24px;
+			border-radius: 24px;
 			transform: scale(0);
 		}
 		&:before{
@@ -513,7 +512,7 @@
 	text-align: center;
 	> [masiv-tab]{
 		flex: 1 1 auto;
-		padding: .4rem;
+		padding: 8px;
 		overflow: hidden;
 		border-radius: inherit;
 
@@ -725,7 +724,7 @@
 .#{$m}disabled, [disabled]{ opacity: .6 !important; pointer-events: none !important; }
 .#{$m}right{ float: right; margin-left: auto; }
 .#{$m}center{ margin: auto; align-self: center; text-align: center; }
-&.#{$m}round{ border-radius: 1000em; }
+&.#{$m}round{ border-radius: 10000px; }
 
 @media (max-width: $breakpoint-md){
 	.#{$m}col-md-1{ width: 10%; }
