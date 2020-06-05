@@ -84,7 +84,7 @@
 		var self = this;
 		context = context || doc;
 		if(typeof selector === 'function'){
-			context.addEventListener(EvtAlias.ready, selector);
+			context.addEventListener(EvtAlias.ready, selector, { once: true });
 			return context;
 		} else if(typeof selector === 'string'){
 			if(selector[0] === '<'){
@@ -327,6 +327,7 @@
 		var isDragging = false;
 		M(doc).on('mousedown', '[masiv-drag]', function( e ){
 			e = e.touches? e.touches[0]: e;
+			e.preventDefault();
 			isDragging = true;
 			var deep = this.getAttribute('masiv-drag') - 0;
 			var target = this;
@@ -387,9 +388,10 @@
 			css.add(ACTIVE_CLASS);
 			css.add(PREFIX + 'transless');
 			dialog.style.cssText = '';
-			var rect = dialog.getBoundingClientRect();
-			var top = pa.scrollTop + (rect.height >= pa.clientHeight? 0: (pa.clientHeight - rect.height)/2);
-			var left = pa.scrollLeft + (rect.width >= pa.clientWidth? 0: (pa.clientWidth - rect.width)/2);
+			var rectA = dialog.getBoundingClientRect();
+			pa = pa === doc.body? doc.documentElement: pa;
+			var top = pa.scrollTop + (rectA.height >= pa.clientHeight? 0: (pa.clientHeight - rectA.height)/2);
+			var left = pa.scrollLeft + (rectA.width >= pa.clientWidth? 0: (pa.clientWidth - rectA.width)/2);
 			dialog.style.cssText = 'left:'+ left +'px;top:'+ top +'px;';
 			dialog.offsetWidth;
 			css.remove(PREFIX + 'transless');
@@ -404,11 +406,7 @@
 		dialog.dispatchEvent(EvtMaps.beforeClose);
 		var pa = dialog.parentNode;
 		var backdrop = pa.classList.contains(PREFIX + 'backdrop');
-		if( backdrop ){
-			toggle(pa, false);
-		} else {
-			toggle(dialog, false);
-		}
+		toggle(backdrop? pa: dialog, false);
 		dialog.dispatchEvent(EvtMaps.close);
 	}
 
