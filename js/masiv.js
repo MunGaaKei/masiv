@@ -388,10 +388,10 @@
 			css.add(ACTIVE_CLASS);
 			css.add(PREFIX + 'transless');
 			dialog.style.cssText = '';
-			var rectA = dialog.getBoundingClientRect();
+			var rect = dialog.getBoundingClientRect();
 			pa = pa === doc.body? doc.documentElement: pa;
-			var top = pa.scrollTop + (rectA.height >= pa.clientHeight? 0: (pa.clientHeight - rectA.height)/2);
-			var left = pa.scrollLeft + (rectA.width >= pa.clientWidth? 0: (pa.clientWidth - rectA.width)/2);
+			var top = pa.scrollTop + (rect.height >= pa.clientHeight? 0: (pa.clientHeight - rect.height)/2);
+			var left = pa.scrollLeft + (rect.width >= pa.clientWidth? 0: (pa.clientWidth - rect.width)/2);
 			dialog.style.cssText = 'left:'+ left +'px;top:'+ top +'px;';
 			dialog.offsetWidth;
 			css.remove(PREFIX + 'transless');
