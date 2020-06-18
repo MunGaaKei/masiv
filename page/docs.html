@@ -33,7 +33,7 @@
             font-size: 32px;
         }
         .logo{
-            margin: 0 10px;
+            margin: 0 12px;
             align-self: center;
         }
         .logo > img {
@@ -59,7 +59,6 @@
         .tree .icon-more-v {
             font-size: .8em;
         }
-        #ifr-box { overflow: hidden; }
 	</style>
 </head>
 <body codes="ithanism">
@@ -78,11 +77,11 @@
                     <a class="nav" masiv-sidebar="#masiv-menu"><i class="iconfont icon-list"></i></a>
                     <a href="../index.html" class="nav iconfont icon-home"></a>
                     <a href="https://github.com/MunGaaKei/masiv" class="nav iconfont icon-github" target="_blank"></a>
-                    <a href="https://ithanism.cn" class="nav iconfont icon-user" target="_blank"></a>
+                    <a href="https://ithanism.cn" class="nav iconfont icon-user" target="_blank" masiv-tip="开发者：求职中"></a>
                 </nav>
             </header>
 
-            <div id="ifr-box" class="n">
+            <div id="ifr-box" class="n" style="overflow: hidden;">
                 <div class="loading"></div>
                 <iframe id="ifr" src="start.html" name="pages" class="iframe"></iframe>
             </div>
@@ -95,8 +94,8 @@
 <script src="../js/plugins/M.tree.js"></script>
 <script>
 M(function(){
-    var $box = document.getElementById('ifr-box');
     var $iframe = document.getElementById('ifr');
+    var $box = $iframe.parentNode;
 
     M('.drawer').tree({
         data: [{

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>起步</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+</head>
+<body>
+
+<article class="article">
+	<h1>数据绑定</h1>
+
+	<section class="section">
+		<h2>示例</h2>
+        <div class="widget">
+            <div id="elephant">
+                <h2>#name# (#type.amount#):</h2>
+                <div class="field">
+                    <label class="label-inline">
+                        <span class="label #color#">#title#:</span>
+                        <input type="text" :value="name" class="input" placeholder="花名">
+                    </label>
+                </div>
+                <p :if="show">半岛铁盒</p>
+                <ul>
+                    <li :for="(item, i) in samples" :if="i % 2 === 0">
+                        <!-- (value, key, index) in object -->
+                        <span data-i="#i#">100</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</section>
+</article>
+
+    
+<script src="../js/masiv.js"></script>
+<script src="../js/prism.js"></script>
+<script src="../js/plugins/M.mia.js"></script>
+<script>
+    const app = M.mia({
+        el: '#elephant',
+        data: {
+            name: '玫瑰',
+            title: '花瓣',
+            samples: ['orchid', 'carnation', 'chrysanthemum'],
+            show: false,
+            color: 'pink',
+            type: {
+                amount: '13'
+            }
+        }
+    });
+    const data = app.data;
+
+    // let expr = 'type["color"]';
+
+    // let compute = new Function('scope', `with( scope ){ 
+
+    //     console.log(${expr});
+
+    // } return true;`);
+
+    // // with( data ) {
+    //     // console.log(type['color']);
+    //     // output: PINK
+    // // }
+
+    // console.log( compute(data, 'type["color"]') );
+    
+    
+
+</script>
+</body>
+</html>
