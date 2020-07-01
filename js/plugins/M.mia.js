@@ -8,7 +8,7 @@
     }
 
     function isObject ( o ) {
-        return o && o.constructor === Object;
+        return o?.constructor === Object;
     }
 
     function proxyData ( data, instance ) {
@@ -39,21 +39,62 @@
                 monitor.execute( key );
 
                 if( isObject(val) ) o[key] = proxyData( val, instance );
+
+                return true;
             }
         });
     }
 
     function compute ( expr, context ) {
         return new Function('context', `
-        
-            with( context ) {
-                return ${expr};
+            let rtn = undefined;
+            let l = context.length;
+
+            while ( l-- ) {
+                try {
+                    with ( context[l] ) {
+                        rtn = ${expr};
+                    }
+                } catch ( error ) {
+                    rtn = undefined;
+                }
+
+                if ( rtn ) return rtn;
             }
+            return rtn;
         `)( context );
     }
 
-    function directiveFor (  ) {
+    function directiveFor ( expr, context ) {
+        // (item, key, index) in object
+        // (a, b, c) in object
+        // a in object
+        expr = expr.split(' in ');
+        
+        let params = expr[0];
+        let space = compute(expr[1], context);
+        let handler = [];
+        let i = 0;
 
+        if ( params.startsWith('(') ) params = params.slice(1, -1);
+        params = params.split(',');
+        
+        for ( let p of params ) {
+            params[i] = p.trim();
+            i++;
+        }
+        
+        i = 0;
+
+        for ( let key in space ) {
+            handler[i] = {};
+            handler[ i ][ params[0] ] = space[key];
+            if ( params.length > 1 ) handler[ i ][ params[1] ] = key;
+            if ( params.length > 2 ) handler[ i ][ params[2] ] = i;
+            i++;
+        }
+        
+        return handler;
     }
 
     function method ( type, fn ) {
@@ -68,9 +109,9 @@
             this.REG = /#(.*?)#/gm;
 
             this.$el.innerHTML = '';
-            this.$el.append( this.compile( this.map, data ) );
+            this.$el.append( this.compile( this.map, [data] ) );
 
-            // console.log(this.map);
+            console.log(this.map);
             
         }
 
@@ -83,9 +124,10 @@
             return map;
         }
 
-        parse ( node ) {
+        parse ( node, parent ) {
             let o = {};
             o.type = node.nodeType;
+            o.parent = parent;
             switch (o.type) {
                 case 1:
                     o.tag = node.tagName;
@@ -100,7 +142,7 @@
                     if( children.length > 0 ) {
                         o.children = [];
                         for ( let el of children ) {
-                            o.children.push( this.parse( el ) );
+                            o.children.push( this.parse( el, o ) );
                         }
                     }
     
@@ -124,19 +166,37 @@
                         // this.render
                         // return el | fragment(:for)
                         let { attrs, children } = node;
-                        console.log(attrs);
                         
-                        if( attrs[':for'] ) {
+                        if ( attrs[':for'] ) {
                             $el = doc.createDocumentFragment();
+
+                            _TARGET = { node, $el, dir: 'for' };
+                            let scopes = directiveFor( attrs[':for'], context );
+                            _TARGET = null;
+
+                            delete node.attrs[':for'];
+                            
+                            for ( let scope of scopes ) {
+                                let domain = context.slice();
+                                domain.push( scope );
+                                $el.append( this.compile([node], domain) );
+                            }
+
+                        } else {
+                            $el = doc.createElement( node.tag );
+
+                            if ( attrs[':if'] ) {
+                                let show = compute(attrs[':if'], context);
+                                
+                            }
+
+                            for ( let attr in attrs ) {
+                                $el.setAttribute(attr, attrs[attr]);
+                            }
+    
+                            children && $el.append( this.compile(children, context) );
                         }
-
-                        $el = doc.createElement( node.tag );
-
-                        for ( let attr in attrs ) {
-                            $el.setAttribute(attr, attrs[attr]);
-                        }
-
-                        children && $el.append( this.compile(children, context) );
+                        
 
                         frag.append( $el );
                     break;
@@ -145,13 +205,16 @@
                         let text = node.text.replace(this.REG, match => {
                             let expr = match.slice(1, -1).trim();
                             if( expr !== '' ) {
-                                _TARGET = { node, $el, dir: 'text' };
+                                _TARGET = { node, $el, dir: 'text', context: context };
+                                console.log(node, $el);
+                                
                                 let val = compute(expr, context);
                                 _TARGET = null;
                                 return val;
                             }
                             return expr;
                         });
+                        
                         $el.textContent = text;
                         frag.append( $el );
                     break;
@@ -185,6 +248,10 @@
                 case 'bind':
 
                 break;
+                case 'for':
+                    console.log(this.$el);
+                    
+                break;
                 default: break;
             }
         }
@@ -193,7 +260,7 @@
             $el.textContent = this.node.text.replace(
                 this.REG,
                 match => {
-                    return compute(match.slice(1, -1).trim(), data);
+                    return compute(match.slice(1, -1).trim(), [data]);
                 }
             );
         }

@@ -31,7 +31,8 @@
                 <ul>
                     <li :for="(item, i) in samples" :if="i % 2 === 0">
                         <!-- (value, key, index) in object -->
-                        <span data-i="#i#">100</span>
+                        <span data-i="#i#">#i# - #item['name']#</span>
+                        <span>的#title#</span>
                     </li>
                 </ul>
             </div>
@@ -49,7 +50,7 @@
         data: {
             name: '玫瑰',
             title: '花瓣',
-            samples: ['orchid', 'carnation', 'chrysanthemum'],
+            samples: [{ name: '康乃馨' }, { name: '向日葵' }, { name: '菊花' }],
             show: false,
             color: 'pink',
             type: {
