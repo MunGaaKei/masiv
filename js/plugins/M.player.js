@@ -133,12 +133,12 @@
             if( mute ){
                 mute.addEventListener('click', function(){ v.muted = !v.muted; });
                 vols.addEventListener('mousedown', function(e){
-                    var oy = e.offsetY;
-                    v.volume = oy / this.offsetHeight;
+                    var ox = e.offsetX;
+                    v.volume = ox / this.offsetWidth;
                 });
                 v.addEventListener('volumechange', function(){
                     var h = Math.round(v.volume * 100);
-                    barv.style.height = h +'%';
+                    barv.style.width = h +'%';
                     
                     if( v.muted ){
                         mute.innerHTML = s.mute;
