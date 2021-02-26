@@ -7,10 +7,9 @@
 	var doc = global.document;
 
 	/* 常量设置 */
-	var PREFIX = doc.body.getAttribute('masiv-namespace') || '';
 	var ANIMATE_DURATION = 200;
 	var IN_CLASS = 'msv-in';
-	var ACTIVE_CLASS = 'msv-active';
+	var ACTIVE_CLASS = 'active';
 	var CAN_TOUCH = 'ontouchend' in doc;
 	var EvtMaps = {
 		beforeOpen: new CustomEvent('beforeOpen', { bubbles: true, cancelable: true }),
@@ -223,7 +222,7 @@
 		
 		while( tar.nodeType !== 9 ){
 			switch( true ){
-				case tar.matches('.'+ PREFIX +'dropmenu'):
+				case tar.matches('.dropmenu'):
 					tar = doc.documentElement;
 				break;
 				case tar.matches('[masiv-dropmenu]'):
@@ -262,12 +261,12 @@
 		var sidebar = doc.querySelector(this.getAttribute('masiv-sidebar'));
 		toggle(sidebar, !sidebar.classList.contains(ACTIVE_CLASS));
 	});
-	M('.'+ PREFIX +'sidebar').on(EvtAlias.click, function(e){
+	M('.sidebar').on(EvtAlias.click, function(e){
 		e.target === this && toggle(this, false);
 	}, true);
 
 	/* TABS */
-	M('[masiv-tabs]').tabs();
+	M('[masiv-tabnavs]').tabs();
 
 	/* COLLAPSE */
 	M('[masiv-collapse]').collapse();
@@ -286,15 +285,15 @@
 		var	css = self.classList;
 
 		if(css.contains(ACTIVE_CLASS) || self.hasAttribute('disabled')) return false;
-		var menu = self.querySelector('.'+ PREFIX +'dropmenu');
+		var menu = self.querySelector('.dropmenu');
 		if( !menu ) return false;
 		css.add(ACTIVE_CLASS);
 		var	rect = self.getBoundingClientRect();
 		var	cssText = '';
 
 		/* SELECT */
-		if( css.contains(PREFIX +'select') ){
-			var input = self.querySelector('.'+ PREFIX +'input');
+		if( css.contains('select') ){
+			var input = self.querySelector('.input');
 			menu['onclick'] = function(e){
 				var tar = e.target;
 				while(tar !== menu){
@@ -377,7 +376,7 @@
 	/* 打开对话框 */
 	function openDialog( dialog ){
 		var pa = dialog.parentNode;
-		var backdrop = pa.classList.contains(PREFIX + 'backdrop');
+		var backdrop = pa.classList.contains('backdrop');
 		if( backdrop ){
 			dialog.dispatchEvent(EvtMaps.beforeOpen);
 			toggle(pa, true);
@@ -385,8 +384,7 @@
 			var css = dialog.classList;
 			if(css.contains(ACTIVE_CLASS)) return;
 			dialog.dispatchEvent(EvtMaps.beforeOpen);
-			css.add(ACTIVE_CLASS);
-			css.add(PREFIX + 'transless');
+			css.add('transless');
 			dialog.style.cssText = '';
 			var rect = dialog.getBoundingClientRect();
 			pa = pa === doc.body? doc.documentElement: pa;
@@ -394,8 +392,8 @@
 			var left = pa.scrollLeft + (rect.width >= pa.clientWidth? 0: (pa.clientWidth - rect.width)/2);
 			dialog.style.cssText = 'left:'+ left +'px;top:'+ top +'px;';
 			dialog.offsetWidth;
-			css.remove(PREFIX + 'transless');
-			dialog.classList.add(IN_CLASS);
+			css.remove('transless');
+			css.add(ACTIVE_CLASS);
 		}
 		dialog.dispatchEvent(EvtMaps.open);
 	}
@@ -405,7 +403,7 @@
 		if( !dialog ) return;
 		dialog.dispatchEvent(EvtMaps.beforeClose);
 		var pa = dialog.parentNode;
-		var backdrop = pa.classList.contains(PREFIX + 'backdrop');
+		var backdrop = pa.classList.contains('backdrop');
 		toggle(backdrop? pa: dialog, false);
 		dialog.dispatchEvent(EvtMaps.close);
 	}
@@ -418,8 +416,8 @@
 		var	pos = M.pos(this);
 		var	box = doc.createElement('DIV');
 
-		box.innerHTML = html +'<div class="'+ PREFIX +'tip-diamond"></div>';
-		box.className = PREFIX + 'tip'+ (options.color? ' '+ options.color: '');
+		box.innerHTML = html +'<div class="tip-diamond"></div>';
+		box.className = 'tip'+ (options.color? ' '+ options.color: '');
 		doc.body.appendChild(box);
 
 		var height = box.offsetHeight;
@@ -434,7 +432,7 @@
 		var	left = alignR? (alignL? (dbc - width - 10): (pos.left - dv)): 10;
 		var	diamond = box.lastChild;
 
-		diamond.style.cssText = 'left:'+ (alignR? (pos.left - left + ow/2): (alignL? width/2: (pos.left + ow/2 - 10))) +'px;top:'+ (alignT? '100%;': '0;');
+		diamond.style.cssText = 'left:'+ (alignR? (pos.left - left + ow/2): (alignL? width/2: (pos.left + ow/2 - 10))) +'px;top:'+ (alignT? '100%;margin-top:-1px;': '1px;');
 		box.style.cssText = 'left:'+ left +'px;top:'+ top +'px;opacity:1;';
 
 		this.addEventListener(options.deactive, function(){
@@ -452,19 +450,23 @@
 		while(tar !== self){
 			if(tar.matches('[masiv-tab]')){
 				if(tar.classList.contains(ACTIVE_CLASS)) return false;
-				var group = self.getAttribute('masiv-tabs');
-				var pNav = self.querySelector('[masiv-tab].'+ ACTIVE_CLASS);
-				var pTab = doc.querySelector('[masiv-taber="'+ group +'"].'+ ACTIVE_CLASS);
-				var tab = doc.querySelector('[masiv-taber="'+ group +'"][masiv-tab="'+ tar.getAttribute('masiv-tab') +'"]');
+				var navs = tar.parentNode;
+				var name = navs.getAttribute('masiv-tabnavs');
+				var pNav = navs.querySelector('[masiv-tab].'+ ACTIVE_CLASS);
+				var pTab = doc.querySelector('[masiv-tabs="'+ name +'"] [masiv-tab].'+ ACTIVE_CLASS);
+				var tab = doc.querySelector('[masiv-tabs="'+ name +'"] [masiv-tab="'+ tar.getAttribute('masiv-tab') +'"]');
 
 				pNav && pNav.classList.remove(ACTIVE_CLASS);
-				pTab && pTab.classList.remove(ACTIVE_CLASS);
-				pTab.dispatchEvent(EvtMaps.close);
-
-				tar.classList.add(ACTIVE_CLASS);
-				tab && tab.classList.add(ACTIVE_CLASS);
-				tab.dispatchEvent(EvtMaps.open);
-				break;
+				if ( pTab ) {
+					pTab.classList.remove(ACTIVE_CLASS);
+					pTab.dispatchEvent(EvtMaps.close);
+				}
+				if ( tab ) {
+					tar.classList.add(ACTIVE_CLASS);
+					tab && tab.classList.add(ACTIVE_CLASS);
+					tab.dispatchEvent(EvtMaps.open);
+					break;
+				}
 			}
             tar = tar.parentNode;
 		}
@@ -477,10 +479,10 @@
 		var tar = e.target;
 		var	self = this;
 		while(tar !== self){
-			if(tar.matches('.'+ PREFIX + 'question')){
+			if(tar.matches('.question')){
 				var one = self.getAttribute('masiv-collapse') === 'one';
 				if( one && !tar.classList.contains(ACTIVE_CLASS) ){
-					var active = self.querySelector('.'+ PREFIX +'question.'+ ACTIVE_CLASS);
+					var active = self.querySelector('.question.'+ ACTIVE_CLASS);
 					active && active.classList.remove(ACTIVE_CLASS);
 				}
 				tar.classList.toggle(ACTIVE_CLASS);
@@ -506,15 +508,15 @@
 			dismiss: EvtAlias.click
 		}, options);
 
-		var pa = doc.getElementsByClassName(PREFIX + 'messages')[0];
+		var pa = doc.getElementsByClassName('messages')[0];
 		if( !pa ){
 			pa = doc.createElement('DIV');
-			pa.className = PREFIX + 'messages';
+			pa.className = 'messages';
 			doc.body.append(pa);
 		}
 
 		var el = doc.createElement('DIV');
-		el.className = PREFIX + (options.color? ('message '+ options.color): 'message');
+		el.className = options.color? ('message '+ options.color): 'message';
 		el.innerHTML = options.html;
 
 		var messages = pa.children;
@@ -528,7 +530,7 @@
 		l > 0? pa.insertBefore(el, messages[0]): pa.append(el);
 
 		el.offsetWidth;
-		el.classList.add(IN_CLASS);
+		el.classList.add(ACTIVE_CLASS);
 
 		if( options.dismiss ){
 			options.timeout && setTimeout(function(){ removeMessage(el); }, options.timeout);
@@ -540,7 +542,7 @@
 	/* 关闭消息 */
 	function removeMessage( el ){
 		if( el ){
-			el.classList.remove(IN_CLASS);
+			el.classList.remove(ACTIVE_CLASS);
 			setTimeout(function(){ el.remove(); }, ANIMATE_DURATION);
 		}
 	}
@@ -554,9 +556,9 @@
 		var html = '';
 		var	def = {
 				siblings: 2,
-				pageClass: PREFIX + 'page',
+				pageClass: 'page',
 				active: ACTIVE_CLASS,
-				dots: '┅'
+				dots: '<i class="iconfont icon-more"></i>'
 			};
 
 		if( options ){
@@ -573,8 +575,8 @@
 		if(siblings === false){
 			prev = p > 1? (p - 1): 1;
 			next = p === pages? pages: (p + 1);
-			html += formatPage(def.pageClass +' '+ PREFIX +'page-prev', prev, (def.prev? def.prev: '上页'), href);
-			html += formatPage(def.pageClass +' '+ PREFIX +'page-next', next, (def.next? def.next: '下页'), href);
+			html += formatPage(def.pageClass +' page-prev', prev, (def.prev? def.prev: '上页'), href);
+			html += formatPage(def.pageClass +' page-next', next, (def.next? def.next: '下页'), href);
 			this.innerHTML = html;
 			return;
 		}
@@ -591,24 +593,24 @@
 		}
 
 		if(p - siblings > 1){
-			html = formatPage(def.pageClass, 1, 1, href) +'<span class="'+ PREFIX +'page-dots">'+ def.dots +'</span>'+ html;
+			html = formatPage(def.pageClass, 1, 1, href) +'<span class="page-dots">'+ def.dots +'</span>'+ html;
 		} else if(p != 1){
 			html = formatPage(def.pageClass, 1, 1, href) + html;
 		}
 
 		if(p + siblings < pages){
-			html += '<span class="'+ PREFIX +'page-dots">'+ def.dots +'</span>'+ formatPage(def.pageClass, pages, pages, href);
+			html += '<span class="page-dots">'+ def.dots +'</span>'+ formatPage(def.pageClass, pages, pages, href);
 		} else if(p != pages){
 			html += formatPage(def.pageClass, pages, pages, href);
 		}
 
 		if( def.prev ){
 			prev = p > 1? (p - 1): 1;
-			html = formatPage(def.pageClass +' '+ PREFIX +'page-prev', prev, (def.prev? def.prev: '上页'), href) + html;
+			html = formatPage(def.pageClass +' page-prev', prev, (def.prev? def.prev: '上页'), href) + html;
 		}
 		if( def.next ){
 			next = p === pages? pages: (p + 1);
-			html += formatPage(def.pageClass +' '+ PREFIX +'page-next', next, (def.next? def.next: '下页'), href);
+			html += formatPage(def.pageClass +' page-next', next, (def.next? def.next: '下页'), href);
 		}
 
 		this.innerHTML = html;
@@ -730,18 +732,8 @@
 		var css = el.classList;
 		if( el.getAttribute('masiv-toggable') ) return;
 		el.setAttribute('masiv-toggable', true);
-		if( appear ){
-			css.add(ACTIVE_CLASS);
-			el.offsetWidth;
-			css.add(IN_CLASS);
-			el.removeAttribute('masiv-toggable');
-		} else {
-			css.remove(IN_CLASS);
-			setTimeout(function(){
-				css && css.remove(ACTIVE_CLASS);
-				el.removeAttribute('masiv-toggable');
-			}, ANIMATE_DURATION);
-		}
+		css && css[appear? 'add': 'remove'](ACTIVE_CLASS);
+		el.removeAttribute('masiv-toggable');
 	}
 
 

@@ -49,8 +49,8 @@
 		&lt;/div>
 	&lt;/div>
 	&lt;footer class="group">
-		&lt;button class="btn white-o right" type="submit" masiv-dismiss="#elephant">取消&lt;/button>
-		&lt;button class="btn pink-o" type="submit">确认&lt;/button>
+		&lt;button class="btn plain right" type="submit" masiv-dismiss="#elephant">取消&lt;/button>
+		&lt;button class="btn blue" type="submit">确认&lt;/button>
 	&lt;/footer>
 &lt;/div>
     </code>
@@ -60,10 +60,10 @@
 
 	<section class="section">
 		<h2>在有背景层下的显示</h2>
-		<p>在对话框外面包裹一层背景层<code>.backdrop</code>，背景层可以同样按需要添加<code>masiv-dismiss</code>属性。<a class="btn black-o" masiv-dialog="#goose">打开</a> 一个有背景层的对话框。</p>
+		<p>在对话框外面包裹一层背景层<code>.backdrop</code>，背景层可以同样按需要添加<code>masiv-dismiss</code>属性。<a class="btn black" masiv-dialog="#goose">打开</a> 一个有背景层的对话框。</p>
 <pre class="language-html">
     <code class="language-html">
-&lt;a class="btn black-o" masiv-dialog="#goose">打开&lt;/a>
+&lt;a class="btn black" masiv-dialog="#goose">打开&lt;/a>
 
 &lt;div class="backdrop" masiv-dismiss="#goose">
 	&lt;div id="goose" class="dialog">
@@ -85,7 +85,7 @@ M('#goose').on('open', function(){
 }).on('close', function(){
 	M.message({
 		html: '你关闭了对话框',
-		color: 'red-o',
+		color: 'red',
 		max: 1
 	});
 });
@@ -118,8 +118,8 @@ M('#goose').on('open', function(){
 		</div>
 	</div>
 	<footer class="group">
-		<button class="btn white-o right" type="submit" masiv-dismiss="#elephant">取消</button>
-		<button class="btn pink-o" type="submit">确认</button>
+		<button class="btn plain right" type="submit" masiv-dismiss="#elephant">取消</button>
+		<button class="btn blue" type="submit">确认</button>
 	</footer>
 </div>
 
@@ -140,7 +140,7 @@ M('#goose').on('open', function(){
 	}).on('close', function(){
 		M.message({
 			html: '你关闭了对话框。',
-			color: 'red-o',
+			color: 'red',
 			max: 1
 		});
 	});

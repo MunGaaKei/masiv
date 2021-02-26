@@ -35,46 +35,50 @@
 	<section class="section">
         <h2>表现</h2>
         <p>按钮加上相应的颜色类，如<code>.black</code>：</p>
-        <p>可选择的颜色有：<span class="black">黑色</span>、<span class="white">白色</span>、<span class="blue">蓝色</span>、<span class="red">红色</span>、<span class="yellow">黄色</span>、<span class="pink">粉色</span>、<span class="green">绿色</span>、<span class="gray">灰色</span>。</p>
+        <p>可选择的颜色有：<span class="black">黑色</span>、<span class="white">白色</span>、<span class="blue">蓝色</span>、<span class="red">红色</span>、<span class="yellow">黄色</span>、<span class="green">绿色</span>。</p>
         <div class="widget dib cols">
             <a class="btn black">黑色</a>
             <a class="btn blue">蓝色</a>
             <a class="btn green plain">绿色</a>
+            <a class="btn red">红色</a>
+            <a class="btn white">白色</a>
+            <a class="btn yellow plain">黄色</a>
         </div>
 <pre class="language-html">
     <code class="language-html">
 &lt;a class="btn black">黑色&lt;/a>
 &lt;a class="btn blue">蓝色&lt;/a>
 &lt;a class="btn green plain">绿色&lt;/a>
+&lt;a class="btn red">红色&lt;/a>
+&lt;a class="btn white">白色&lt;/a>
+&lt;a class="btn yellow plain">黄色&lt;/a>
     </code>
 </pre>
 
-		<p>填充的则加上<code>.black-o</code>类：</p>
+		<p>反显的幽灵按钮则加上<code>.reverse</code>类：</p>
         <div class="widget cols dib">
-            <a class="btn black-o">黑色</a>
-            <a class="btn blue-o">蓝色</a>
-            <a class="btn yellow-o">黄色</a>
-            <a class="btn red-o">红色</a>
-            <a class="btn green-o">绿色</a>
-            <a class="btn pink-o">粉色</a>
-            <a class="btn white-o">白色</a>
-            <a class="btn gray-o">灰色</a>
+            <a class="btn black reverse">黑色</a>
+            <a class="btn blue reverse">蓝色</a>
+            <a class="btn yellow reverse">黄色</a>
+            <a class="btn red reverse">红色</a>
+            <a class="btn green reverse">绿色</a>
+            <a class="btn white reverse">白色</a>
         </div>
 <pre class="language-html">
     <code class="language-html">
-&lt;a class="btn black-o">黑色&lt;/a>
+&lt;a class="btn black reverse">黑色&lt;/a>
     </code>
 </pre>
 
         <p>加载状态下的按钮</p>
         <div class="widget dib cols">
             <a class="btn is-loading">加载中</a>
-            <a id="btn-loading" class="btn white-o">每三秒钟点击我一次</a>
+            <a id="btn-loading" class="btn blue">每三秒钟点击我一次</a>
         </div>
 <pre class="language-html">
     <code class="language-html">
 &lt;a class="btn is-loading">加载中&lt;/a>
-&lt;a class="btn white-o">每三秒钟点击我一次&lt;/a>
+&lt;a class="btn blue">每三秒钟点击我一次&lt;/a>
     </code>
 </pre>
 
@@ -94,67 +98,23 @@
         <p>多个按钮可以放入<code>.group</code>容器里。</p>
         <div class="widget">
         	<div class="group round">
-        		<a class="btn blue-o">蓝色</a>
-        		<a class="btn black-o">黑色</a>
-        		<a class="btn yellow-o">黄色</a>
-        		<a class="btn red-o">红色</a>
+        		<a class="btn blue">蓝色</a>
+        		<a class="btn black">黑色</a>
+        		<a class="btn yellow">黄色</a>
+        		<a class="btn red">红色</a>
         	</div>
         </div>
 <pre class="language-html">
     <code class="language-html">
 &lt;div class="group round">
-    &lt;a class="btn blue-o">蓝色&lt;/a>
-    &lt;a class="btn black-o">黑色&lt;/a>
-    &lt;a class="btn yellow-o">黄色&lt;/a>
-    &lt;a class="btn red-o">红色&lt;/a>
+    &lt;a class="btn blue">蓝色&lt;/a>
+    &lt;a class="btn black">黑色&lt;/a>
+    &lt;a class="btn yellow">黄色&lt;/a>
+    &lt;a class="btn red">红色&lt;/a>
 &lt;/div>
     </code>
 </pre>
 
-        <p><code>.collapsed</code>类可以使按钮边框合并，建议作用在子元素为边框类型的组。带有<code>.iconfont</code>的按钮建议在文本内容加上标签。</p>
-        <div class="widget">
-        	<div class="group collapsed">
-        		<a class="btn black"><span>HOME</span><i class="iconfont icon-home"></i></a>
-        		<a class="btn black"><span>FRIENDS</span><i class="iconfont icon-friends"></i></a>
-                <a class="btn black"><span>SETTING</span><i class="iconfont icon-setting"></i></a>
-                <div masiv-dropmenu>
-                    <a class="btn black-o"><i class="iconfont icon-more-v"></i></a>
-                    <ul class="dropmenu black-o">
-                        <li class="li">PROFILE</li>
-                        <li class="li">HELP</li>
-                        <li class="li">EXIT</li>
-                    </ul>
-                </div>
-        	</div>
-        </div>
-<pre class="language-html">
-    <code class="language-html">
-&lt;div class="group collapsed">
-    &lt;a class="btn black">
-        &lt;span>HOME&lt;/span>
-        &lt;i class="iconfont icon-home">&lt;/i>
-    &lt;/a>
-    &lt;a class="btn black">
-        &lt;span>FRIENDS&lt;/span>
-        &lt;i class="iconfont icon-friends">&lt;/i>
-    &lt;/a>
-    &lt;a class="btn black">
-        &lt;span>SETTING&lt;/span>
-        &lt;i class="iconfont icon-setting">&lt;/i>
-    &lt;/a>
-    &lt;div masiv-dropmenu>
-        &lt;a class="btn black-o">&lt;i class="iconfont icon-more-v">&lt;/i>&lt;/a>
-        &lt;ul class="dropmenu black-o">
-            &lt;li class="li">PROFILE&lt;/li>
-            &lt;li class="li">HELP&lt;/li>
-            &lt;li class="li">EXIT&lt;/li>
-        &lt;/ul>
-    &lt;/div>
-&lt;/div>
-    </code>
-</pre>
-
-        <p></p>
     </section>
 
 </article>

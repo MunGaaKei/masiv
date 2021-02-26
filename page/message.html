@@ -30,7 +30,7 @@ M.message('Look at the stars');
 
 M.message({
 	html: 'Yeah, they were all &lt;b>yellow&lt;/b>',
-	color: 'yellow-o'
+	color: 'yellow'
 });
     </code>
 </pre>
@@ -42,7 +42,7 @@ M.message({
 			<table class="table">
 				<thead><th>参数</th><th>默认值</th><th>说明</th></thead>
 				<tbody>
-					<tr><td>html</td><td class="red">【必需】</td><td>内容HTML字符串</td></tr>
+					<tr><td>html</td><td>【必需】</td><td>内容HTML字符串</td></tr>
 					<tr><td>color</td><td>null</td><td>修饰类名字符串</td></tr>
 					<tr><td>timeout</td><td>2019</td><td>消息存活时间，单位<code>ms</code></td></tr>
 					<tr><td>dismiss</td><td>'click'</td><td>消失触发事件类型</td></tr>
@@ -59,7 +59,7 @@ M.message({
 ;(function(){
 
 	var messages = ['Look at the stars', 'Look how they shine for you', 'And everything you do', 'Yeah, they were all <b>yellow</b>'];
-	var color = ['yellow-o', 'black-o'];
+	var color = ['yellow', 'black'];
 	var rand = function( n ){
 		return ~~(Math.random() * n);
 	}

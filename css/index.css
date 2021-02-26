@@ -13,6 +13,8 @@
 }
 .version{
     margin-left: 12px;
+    font-weight: 900;
+    font-family: monospace;
 }
 .bio{
     margin: 16px 0 0 12px;
@@ -22,6 +24,7 @@ h1{
     letter-spacing: 10px;
     text-indent: 12px;
     line-height: 1.2;
+    font-weight: 900;
 }
 h1 span{
     color: #000;

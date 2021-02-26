@@ -1,4 +1,8 @@
-.article h1{ margin-bottom: 16px; font-size: 2em; }
+
+.article h1{
+    margin: 16px 0;
+    font-size: 2em;
+}
 .section > h2{
     position: relative;
     display: inline-block;

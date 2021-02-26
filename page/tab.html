@@ -23,56 +23,61 @@
 
 	<section class="section">
 		<h2>结构</h2>
-		<p>容器需带有<code>[masiv-tabs]</code>属性，标签导航与标签页间使用<code>[masiv-nav]</code>与<code>[masiv-tab]</code>属性通信，它们的值必须一致。</p>
+		<p>标签导航与标签页间使用<code>[masiv-tabnavs]</code>与<code>[masiv-tabs]</code>属性通信，它们的值必须一致。</p>
 		<p>每个tab关闭打开时都会触发相应的触发<code>close</code>或<code>open</code>事件。</p>
 		<div class="widget">
-			<nav class="navs" masiv-tabs="queen">
-				<a class="nav msv-active" masiv-tab="love">窗口</a>
+			<nav class="navs" masiv-tabnavs="queen">
+				<a class="nav active" masiv-tab="love">窗口</a>
 				<a class="nav" masiv-tab="of">晴天</a>
 				<a class="nav" masiv-tab="my">题破山寺后禅院</a>
 				<a class="nav" masiv-tab="life">事件监听</a>
 			</nav>
-			<div class="tab msv-active" masiv-tab="love" masiv-taber="queen">
-				<div class="blocker">TAB</div>
-			</div>
-			<div class="tab" masiv-tab="of" masiv-taber="queen">
-				<div class="blocker">
-					<p>Re So So Si Do Si La</p>
-					<p>So La Si Si Si Si La Si La So</p>
+			<div masiv-tabs="queen">
+				<div class="tab active" masiv-tab="love">
+					<div class="blocker">TAB</div>
 				</div>
+				<div class="tab" masiv-tab="of">
+					<div class="blocker">
+						<p>Re So So Si Do Si La</p>
+						<p>So La Si Si Si Si La Si La So</p>
+					</div>
+				</div>
+				<div class="tab" masiv-tab="my">
+					<div class="blocker">清晨入古寺</div>
+				</div>
+				<div class="tab" masiv-tab="life"></div>
 			</div>
-			<div class="tab" masiv-tab="my" masiv-taber="queen">
-				<div class="blocker">清晨入古寺</div>
-			</div>
-			<div class="tab" masiv-tab="life" masiv-taber="queen"></div>
+			
 		</div>
 		<code>HTML</code>
 <pre class="language-html">
     <code class="language-html">
-&lt;nav class="navs" masiv-tabs="queen">
-	&lt;a class="nav msv-active" masiv-tab="love">窗口&lt;/a>
+&lt;nav class="navs" masiv-tabnavs="queen">
+	&lt;a class="nav active" masiv-tab="love">窗口&lt;/a>
 	&lt;a class="nav" masiv-tab="of">晴天&lt;/a>
 	&lt;a class="nav" masiv-tab="my">题破山寺后禅院&lt;/a>
 	&lt;a class="nav" masiv-tab="life">事件监听&lt;/a>
 &lt;/nav>
 
-&lt;div class="tab msv-active" masiv-tab="love" masiv-taber="queen">
-	&lt;p>白日依山尽，黄河入海流。&lt;/p>
-	&lt;p>欲穷千里目，更上一层楼。&lt;/p>
-&lt;/div>
-
-&lt;div class="tab" masiv-tab="of" masiv-taber="queen">
-	&lt;div class="blocker">
-		&lt;p>Re So So Si Do Si La&lt;/p>
-		&lt;p>So La Si Si Si Si La Si La So&lt;/p>
+&lt;div masiv-tabs="queen">
+	&lt;div class="tab active" masiv-tab="love">
+		&lt;p>白日依山尽，黄河入海流。&lt;/p>
+		&lt;p>欲穷千里目，更上一层楼。&lt;/p>
 	&lt;/div>
-&lt;/div>
 
-&lt;div class="tab" masiv-tab="my" masiv-taber="queen">
-	&lt;div class="blocker">清晨入古寺&lt;/div>
-&lt;/div>
+	&lt;div class="tab" masiv-tab="of">
+		&lt;div class="blocker">
+			&lt;p>Re So So Si Do Si La&lt;/p>
+			&lt;p>So La Si Si Si Si La Si La So&lt;/p>
+		&lt;/div>
+	&lt;/div>
 
-&lt;div class="tab" masiv-tab="life" masiv-taber="queen">&lt;/div>
+	&lt;div class="tab" masiv-tab="my">
+		&lt;div class="blocker">清晨入古寺&lt;/div>
+	&lt;/div>
+
+	&lt;div class="tab" masiv-tab="life">&lt;/div>
+&lt;/div>
     </code>
 </pre>
 		<code>JS</code>

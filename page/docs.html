@@ -29,19 +29,17 @@
 		.nav:hover:after{
 			width: 40%; left: 12px;
         }
-        .nav h1 {
-            font-size: 32px;
-        }
         .logo{
             margin: 0 12px;
             align-self: center;
         }
+        .logo h1 {
+            font-size: 32px;
+            font-weight: 900;
+            font-style: italic;
+        }
         .logo > img {
             max-height: 30px;
-        }
-        .sidebar{
-            z-index: 100;
-            background: #ececec;
         }
         .drawer{
             padding: 36px 0;
@@ -56,12 +54,12 @@
         .tree .li:hover {
             color: #212121;
         }
-        .tree .icon-more-v {
+        .tree .icon-down {
             font-size: .8em;
         }
 	</style>
 </head>
-<body codes="ithanism">
+<body codes="iannism">
 
     <div class="room cols">
 
@@ -91,7 +89,7 @@
     </div>
 
 <script src="../js/masiv.js"></script>
-<script src="../js/plugins/M.tree.js"></script>
+<script src="../js/plugins/tree.js"></script>
 <script>
 M(function(){
     var $iframe = document.getElementById('ifr');
@@ -110,7 +108,7 @@ M(function(){
             open: true,
             children: [
                 { name: '布局', href: 'layout.html' },
-                { name: '主题', href: 'themes.html' },
+                // { name: '主题', href: 'themes.html' },
                 { name: '图标', href: 'iconfont.html' },
                 { name: '按钮', href: 'button.html' },
                 { name: '文字内容', href: 'text.html' },
@@ -139,7 +137,7 @@ M(function(){
             children: [
                 { name: '输入框', href: 'input.html', icon: '<i class="iconfont icon-form"></i>' },
                 { name: '树', href: 'tree.html', icon: '<i class="iconfont icon-tree"></i>' },
-                { name: '轮播', href: 'slide.html', icon: '<i class="iconfont icon-map"></i>' },
+                { name: '轮播', href: 'swipe.html', icon: '<i class="iconfont icon-map"></i>' },
                 { name: '播放器', href: 'player.html', icon: '<i class="iconfont icon-youtube"></i>' },
                 { name: '滚动监听', href: 'scrollspy.html', icon: '<i class="iconfont icon-sort"></i>' }
             ]
@@ -147,7 +145,7 @@ M(function(){
         target: 'pages',
         folder: false,
         item: false,
-        toggler: '<i class="iconfont icon-more-v"></i>'
+        toggler: '<i class="iconfont icon-down"></i>'
     }).on('click', 'a[href]', function(){
         var div = $box.querySelector('.loading');
         if( !div ){

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>轮播图</title>
+    <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <style>
+    .blocker{
+        height: 150px;
+    }
+    .swipe-demo{
+        max-height: 150px;
+        overflow: hidden;
+    }
+    .swipe-demo.msv-swipe-initialized{
+        max-height: unset;
+        overflow: unset;
+    }
+    </style>
+</head>
+<body>
+
+<article class="article">
+    <h1>轮播图</h1>
+    <p>引入<code class="blue">JS</code>，<a href="../lib/plugins/swipe.min.js" download="swipe.min.js" class="link">下载</a>。</p>
+<pre class="language-js">
+    <code class="language-js">
+&lt;script src="js/plugins/swipe.min.js">&lt;/script>
+    </code>
+</pre>
+
+	<section class="section">
+        <h2>初始化</h2>
+        <p>仅需一句简单的命令即可将一个节点列表生成一个<code>swipe</code>。</p>
+        <div class="widget">
+            <div id="masiv-only" class="swipe-demo">
+                <div class="blocker">1</div>
+                <div class="blocker">2</div>
+                <div class="blocker">3</div>
+            </div>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div id="masiv-only">
+    &lt;div class="blocker">1&lt;/div>
+    &lt;div class="blocker">2&lt;/div>
+    &lt;div class="blocker">3&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+        <code>JS</code>
+<pre class="language-js">
+    <code class="language-js">
+M('#masiv-only').swipe();
+    </code>
+</pre>
+    </section>
+    
+    <section class="section">
+        <h2>带可选参数实例</h2>
+        <p><code>swipe()</code>方法接收一个对象参数来设置样式以及回调函数等。</p>
+        <div class="widget">
+            <div id="masiv-swipe" class="swipe-demo">
+                <div class="blocker">1</div>
+                <div class="blocker">2</div>
+                <div class="blocker">3</div>
+                <div class="blocker">4</div>
+                <div class="blocker">5</div>
+                <div class="blocker">6</div>
+                <div class="blocker">7</div>
+                <div class="blocker">8</div>
+            </div>
+            <p id="current" style="margin: 8px 0;">当前索引值：0</p>
+        </div>
+        <code>HTML</code>
+<pre class="language-html">
+    <code class="language-html">
+&lt;div id="masiv-swipe">
+    &lt;div class="blocker">1&lt;/div>
+    &lt;div class="blocker">2&lt;/div>
+    &lt;div class="blocker">3&lt;/div>
+    &lt;div class="blocker">4&lt;/div>
+    &lt;div class="blocker">5&lt;/div>
+    &lt;div class="blocker">6&lt;/div>
+    &lt;div class="blocker">7&lt;/div>
+    &lt;div class="blocker">8&lt;/div>
+&lt;/div>
+    </code>
+</pre>
+        <code>JS</code>
+<pre class="language-js">
+    <code class="language-js">
+M('#masiv-swipe').swipe({
+    display: 3,
+    scroll: 2,
+    prev: '&lt;i class="iconfont icon-left">&lt;/i>',
+    next: '&lt;i class="iconfont icon-left">&lt;/i>',
+    navs: true,
+    responsive: {
+        '720': { display: 2, scroll: 1 },
+        '360': { display: 1 }
+    },
+    afterSlide: function( current ){
+        document.getElementById('current').textContent = '当前索引值：'+ current;
+    }
+});
+    </code>
+</pre>
+    </section>
+
+    <section class="section">
+        <h2>参数属性说明</h2>
+        <div class="widget" style="overflow: auto;">
+            <table class="table">
+                <thead><th>参数</th><th>默认值</th><th>说明</th></thead>
+                <tbody>
+                    <tr><td>prev</td><td>'&lt;'</td><td>后退按钮，值为<code>false</code>时不显示</td></tr>
+                    <tr><td>next</td><td>'&gt;'</td><td>前进按钮，值为<code>false</code>时不显示</td></tr>
+                    <tr><td>navs</td><td>false</td><td>导航，值为<code>true</code>时显示</td></tr>
+                    <tr><td>navsTrigger</td><td>'click'</td><td>导航按钮触发事件类型</td></tr>
+                    <tr><td>loop</td><td>true</td><td>轮播是否循环</td></tr>
+                    <tr><td>display</td><td>1</td><td>每屏显示的个数</td></tr>
+                    <tr><td>scroll</td><td>1</td><td>每次切换的个数</td></tr>
+                    <tr><td>start</td><td>0</td><td>初始化后的开始位置</td></tr>
+                    <tr><td>auto</td><td>false</td><td>是否自动轮播</td></tr>
+                    <tr><td>duration</td><td>3000</td><td>单位<code>ms</code>，自动轮播的时间间隔</td></tr>
+                    <tr><td>pauseOnHover</td><td>false</td><td>自动轮播时是否鼠标悬停时暂停轮播</td></tr>
+                    <tr><td>speed</td><td>300</td><td>单位<code>ms</code>，切换的过渡时间</td></tr>
+                    <tr><td>easing</td><td>'ease'</td><td>切换的过渡动画效果</td></tr>
+                    <tr><td>responsive</td><td>undefined</td><td>接受一个对象参数，对象键名为<code>breakpoint</code>值，值则为设置</td></tr>
+                    <tr><td>beforeSlide</td><td>undefined</td><td>接受一个函数作为轮播切换<b class="blue reverse">前</b>触发的回调函数</td></tr>
+                    <tr><td>afterSlide</td><td>undefined</td><td>接受一个函数作为轮播切换<b class="blue reverse">后</b>触发的回调函数</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>方法</h2>
+        <p>每次实例化后，可以继续使用<code>swipe(fnName[, param])</code>方法来操作对应的轮播实例。</p>
+        <p>或者通过调用<code>swipe('swipe')</code>方法，该方法返回一个对象，该对象有更多对于该轮播实例的操作方法与属性。</p>
+        <div class="widget">
+            <div id="masiv-function" class="swipe-demo">
+                <div class="blocker">1</div>
+                <div class="blocker">2</div>
+                <div class="blocker">3</div>
+            </div>
+            <i id="swipe-next" class="btn yellow" style="margin: 8px 0;" style="margin-top: 10px;">next</i>
+        </div>
+<code>JS</code>
+        <pre class="language-js">
+    <code class="language-js">
+var $function = M('#masiv-function').swipe({
+    prev: false,
+    next: false
+});
+var $swipe = $function.swipe('swipe');
+
+$function.swipe('next');
+$swipe.next();
+
+$function.swipe('goto', 0);
+$swipe.goto(0);
+    </code>
+</pre>
+        <div class="fn">
+            <h4 class="blue reverse fn-name">prev()</h4>
+            <p>切换至上一个</p>
+        </div>
+        <div class="fn">
+            <h4 class="blue reverse fn-name">next()</h4>
+            <p>切换至下一个</p>
+        </div>
+        <div class="fn">
+            <h4 class="blue reverse fn-name">goto( i )</h4>
+            <p>i <code>int</code>：根据索引切换到指定位置</p>
+        </div>
+        <div class="fn">
+            <h4 class="blue reverse fn-name">destroy()</h4>
+            <p>注销该轮播实例</p>
+        </div>
+        <div class="fn">
+            <h4 class="blue reverse fn-name">current</h4>
+            <p>返回该轮播的当前项索引值</p>
+        </div>
+        <div class="fn">
+            <h4 class="blue reverse fn-name">length</h4>
+            <p>返回该轮播的数量</p>
+        </div>
+    </section>
+</article>
+
+<script src="../js/masiv.js"></script>
+<script src="../js/plugins/swipe.js"></script>
+<script src="../js/prism.js"></script>
+<script>
+M(function(){
+    M('#masiv-only').swipe();
+
+    M('#masiv-swipe').swipe({
+        display: 3,
+        scroll: 2,
+        prev: '<i class="iconfont icon-left"></i>',
+        next: '<i class="iconfont icon-right"></i>',
+        navs: true,
+        responsive: {
+            '720': { display: 2, scroll: 2 },
+            '320': { display: 1 }
+        },
+        afterSlide: function( current ){
+            document.getElementById('current').textContent = '当前索引值：'+ current;
+        }
+    });
+
+    var $function = M('#masiv-function').swipe({
+        prev: false,
+        next: false
+    });
+    M('#swipe-next').on('click', function(){
+        $function.swipe('next');
+    });
+});
+</script>
+</body>
+</html>
