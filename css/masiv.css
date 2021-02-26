@@ -42,6 +42,24 @@
     --red-vice: #f14164;
 }
 
+.masiv-dark {
+    --background: #2a2a2a;
+    --background-vice: #313131;
+    --color: #f3f3f3;
+    --color-vice: #6a6a6a;
+
+    --theme-color: #ffd832;
+    --theme-color-vice: #fcea4d;
+    --theme-color-active: #e7d535;
+    --theme-color-reverse: #212121;
+    --theme-color-hover: #3a3a3a;
+    --shadow: 0 0 16px rgba(0,0,0,.4);
+
+    --input: #393939;
+    --input-hover: #414141;
+    --scrollbar: #5a5a5a;
+}
+
 article,aside,dialog,footer,header,section,footer,nav,figure,menu,img,video,audio{ display: block; }
 body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dialog,dl,dt,dd,ul,ol,li,iframe,pre,form,figure,fieldset,legend,button,input,textarea,th,td{ margin: 0; padding: 0; border: 0; }
 a{ color: inherit; text-decoration: none; cursor: pointer; transition: var(--transition); }

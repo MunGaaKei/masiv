@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
     <title>主题</title>
     <link rel="shortcut icon" href="../ico.ico" type="image/x-icon">
-    <link id="theme" rel="stylesheet" href="../css/masiv.css">
+    <link rel="stylesheet" href="../css/masiv.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/prism.css">
 </head>
@@ -18,23 +18,32 @@
 
 	<section class="section">
         <h2>选择</h2>
-        <p><code>2.0</code>版本采用原生css变量控制主题。</p>
-<pre class="language-js">
-    <code class="language-js">
-├── default
-|   ├─ var.scss             /* 变量设置 */
-|   ├─ reset.scss           /* 默认样式重置 */
-|   ├─ components.scss      /* 组件样式 */
-|   ├─ plugin.scss          /* 插件样式 */
-|   ├─ custom.scss          /* 自定义添加的样式 */
-|   └─ masiv.css            /* 默认编译出来的 css 文件，可忽略 */
-    </code>
-</pre>
+        <p><code>2.0</code>版本采用原生css变量控制主题。默认带有的黑色主题通过在容器（比如 html 标签）加上<code>.masiv-dark</code>类即可激活。</p>
+        <br>
+        <p><a id="theme" class="btn">切换主题</a></p>
+        <br>
+        
+        <div class="field">
+            <label class="label-input">
+                <span class="label">用户名：</span>
+                <input type="text" class="input" autocomplete="off">
+            </label>
+            <label class="label-input">
+                <span class="label">密码：</span>
+                <input type="password" class="input" autocomplete="off">
+            </label>
+        </div>
     </section>
 </article>
-
     
 <script src="../js/masiv.js"></script>
 <script src="../js/prism.js"></script>
+<script>
+    M(function(){
+        document.getElementById('theme').addEventListener('click', function(){
+            document.documentElement.classList.toggle('masiv-dark');
+        });
+    });
+</script>
 </body>
 </html>

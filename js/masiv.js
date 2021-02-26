@@ -8,7 +8,6 @@
 
 	/* 常量设置 */
 	var ANIMATE_DURATION = 200;
-	var IN_CLASS = 'msv-in';
 	var ACTIVE_CLASS = 'active';
 	var CAN_TOUCH = 'ontouchend' in doc;
 	var EvtMaps = {
@@ -83,7 +82,7 @@
 		var self = this;
 		context = context || doc;
 		if(typeof selector === 'function'){
-			context.addEventListener(EvtAlias.ready, selector, { once: true });
+			context.addEventListener(EvtAlias.ready, selector);
 			return context;
 		} else if(typeof selector === 'string'){
 			if(selector[0] === '<'){

@@ -1,0 +1,17 @@
+:root {
+    --background: #2a2a2a;
+    --background-vice: #313131;
+    --color: #f3f3f3;
+    --color-vice: #6a6a6a;
+
+    --theme-color: #ffd832;
+    --theme-color-vice: #fcea4d;
+    --theme-color-active: #e7d535;
+    --theme-color-reverse: #212121;
+    --theme-color-hover: #3a3a3a;
+    --shadow: 0 0 16px rgba(0,0,0,.4);
+
+    --input: #393939;
+    --input-hover: #414141;
+    --scrollbar: #5a5a5a;
+}
